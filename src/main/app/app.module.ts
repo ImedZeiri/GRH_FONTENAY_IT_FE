@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {RouterModule} from "@angular/router";
+
 
 // noinspection AngularInvalidImportedOrDeclaredSymbol
 @NgModule({
   declarations: [
     AppComponent,
+    //LoginComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

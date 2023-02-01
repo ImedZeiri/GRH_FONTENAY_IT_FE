@@ -10,6 +10,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {FormBuilder, FormGroup} from "@angular/forms";
+
 
 @NgModule({
   declarations: [],
@@ -34,7 +36,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatRadioModule,
     MatSelectModule,
     MatSliderModule,
-    MatSlideToggleModule,
+    MatSlideToggleModule
   ]
 })
 export class FormsModule { }
