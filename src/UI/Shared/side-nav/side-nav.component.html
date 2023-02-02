@@ -1,0 +1,51 @@
+
+<mat-toolbar class="custom-toolbar" color="warn">
+  <mat-toolbar-row >
+      <mat-icon *ngIf="!showFiller" style="margin: 20px 20px;color: darkorange ;"(click)="showFiller = !showFiller">menu</mat-icon>
+      <h4 mat-line *ngIf="showFiller" style="margin: 20px 20px;color: darkorange ;text-align: center"(click)="showFiller = !showFiller">Dashboard</h4>
+     <span>Toolbar</span>
+    <span class="example-spacer"></span>
+    <mat-icon routerLink="login">
+      <span class="material-icons-outlined">logout</span>
+    </mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container class="custom-drawer-container" fullscreen [ngClass]="{ 'container-closed': !showFiller }">
+  <mat-drawer #drawer class="example-sidenav" mode="side" disableClose="true" opened="true">
+    <mat-divider></mat-divider>
+
+    <mat-nav-list>
+          <mat-list-item *ngFor="let data of navData">
+            <div *ngIf="!showFiller">
+                <mat-icon style="color: darkorange ;margin: 20px 2px;" [matMenuTriggerFor]="menu">{{data.icon}}</mat-icon>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+              </mat-menu>
+            </div>
+            <div *ngIf="showFiller" >
+              <mat-accordion class="app-nav-accordion">
+              <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon style="color: darkorange">{{data.icon}}</mat-icon>
+                    {{data.label}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                  <a mat-list-item>Item Three</a>
+                  <a mat-list-item>Item Four</a>
+                </mat-nav-list>
+              </mat-expansion-panel>
+            </mat-accordion>
+            </div>
+          </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <app-body></app-body>
+    <!--<button type="button" mat-button (click)="drawer.toggle()">Toggle sidenav</button>-->
+  </div>
+
+</mat-drawer-container>

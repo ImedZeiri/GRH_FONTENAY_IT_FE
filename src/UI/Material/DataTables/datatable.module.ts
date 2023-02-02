@@ -11,12 +11,13 @@ import { MatTableModule } from '@angular/material/table';
     CommonModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+
   ],
   exports: [
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
   ]
 })
 export class DatatableModule { }

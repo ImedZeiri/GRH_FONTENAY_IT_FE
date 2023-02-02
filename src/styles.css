@@ -1,4 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --menu-width-open: 200px;
+  --menu-width-closed: 64px;
+}
+body {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.custom-toolbar {
+  height: 60px !important;
+}
+.mat-drawer-container.custom-drawer-container {
+  top: 64px !important;
+}
+.mat-drawer-container .mat-drawer {
+  box-sizing: content-box;
+  width: var(--menu-width-open);
+  transition: all 0.3s ease-in-out !important;
+}
+.mat-drawer-container .mat-drawer-content {
+  margin-left: var(--menu-width-open) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+.mat-drawer-container.container-closed .mat-drawer {
+  width: var(--menu-width-closed);
+}
+.mat-drawer-container.container-closed .mat-drawer-content {
+  margin-left: var(--menu-width-closed) !important;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
