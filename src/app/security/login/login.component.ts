@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {AuthInterceptor} from '../../../../core/interceptors/auth.interceptor';
+import {AuthInterceptor} from '../../core/interceptors/auth.interceptor';
 
 @Component({
   selector: 'app-login',

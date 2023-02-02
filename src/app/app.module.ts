@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './security/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AuthInterceptor} from '../../core/interceptors/auth.interceptor';
+import {AuthInterceptor} from './core/interceptors/auth.interceptor';
 
 
 @NgModule({
