@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, } from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/login/auth.service';
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,13 @@ import { AuthService } from '../../core/services/login/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   isLoading = false;
   responsedata: any;
+  decodedToken:any;
+  helper = new JwtHelperService;
+  error : string ='';
+
+
 
   constructor(private service: AuthService,private route:Router) {
     localStorage.clear();
@@ -22,22 +27,30 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
+
   }
   ProceedLogin() {
-    this.isLoading = true;
     if (this.Login.valid) {
+      this.isLoading = true;
       this.service.ProceedLogin(this.Login.value).subscribe(result => {
         if(result!=null){
           this.responsedata=result;
-          localStorage.setItem('refresh_token',this.responsedata.refresh_token)
-          localStorage.setItem('token',this.responsedata.token)
-          this.route.navigate([''])
+          localStorage.setItem('refresh_token',this.responsedata.refresh_token);
+          localStorage.setItem('token',this.responsedata.token);
+          this.decodedToken = this.helper.decodeToken(this.responsedata.token);
+          localStorage.setItem('username',this.decodedToken.username);
+          this.route.navigate(['']);
           console.log("done !!");
           console.log(this.responsedata.refresh_token);
           console.log(this.responsedata.token);
+          console.log(this.decodedToken.username);
           this.isLoading = false;
         }
-
+        else {
+          this.error = 'Login failed';
+          this.isLoading = false;
+          
+        }
       });
     }
   }

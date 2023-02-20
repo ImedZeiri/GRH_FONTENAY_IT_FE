@@ -1,32 +1,28 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {navbarData} from "./nav-data";
+import { Component, OnInit } from '@angular/core';
 
-interface SideNavToggle {
-  screenWidth: number;
-  collapsed: boolean;
-}
 @Component({
-  selector: 'app-side-nav',
-  templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.css']
+  selector: 'app-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.css']
 })
-export class SideNavComponent implements OnInit {
-  navData = navbarData;
-  sidenavWidth = 4;
+export class ToolbarComponent implements OnInit {
   contentStart = "red";
   Expanded : boolean;
-  constructor(){}
   opacityValue: any;
+  sidenavWidth = 4;
+  constructor() { }
+
   ngOnInit(): void {
   }
+
   opacityUp() {
     this.opacityValue = 1;
   }
   opacityDown() {
     if (!this.Expanded){
       setTimeout(() => {
-        this.opacityValue = 0.7;
-      }, 1000);
+        this.opacityValue = 0.8;
+      }, 4000);
     }
   }
   toggle(Expanded: boolean){
@@ -41,4 +37,5 @@ export class SideNavComponent implements OnInit {
       console.log('expanded',this.Expanded);
     }
   }
+
 }

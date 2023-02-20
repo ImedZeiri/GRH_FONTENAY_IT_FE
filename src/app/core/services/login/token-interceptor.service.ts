@@ -1,11 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { AuthService } from './auth.service';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor, HttpErrorResponse, HttpClient
-} from '@angular/common/http';
+import {HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse, HttpClient} from '@angular/common/http';
 import {catchError, Observable, switchMap, throwError} from 'rxjs';
 
 @Injectable({
@@ -30,7 +25,6 @@ export class TokenInterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(catchError((err: HttpErrorResponse) => {
       if (err.status === 401 && !this.refresh) {
         this.refresh = true;
-
         return this.http.post('http://localhost:8000/api/token/refresh', {refresh_token: authservice.GetRefreshToken}, {withCredentials: true}).pipe(
           switchMap((res: any) => {
             TokenInterceptorService.accessToken = res.token;
@@ -49,5 +43,5 @@ export class TokenInterceptorService implements HttpInterceptor {
 
 
 
-  
+
 }

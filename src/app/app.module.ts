@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './security/login/login.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {SideNavComponent} from "../UI/Shared/side-nav/side-nav.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -18,7 +17,16 @@ import {PopupsModule} from "../UI/Material/Popups/popups.module";
 import {TokenInterceptorService} from "./core/services/login/token-interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
 import {LoadingSpinnerComponent} from "../UI/Shared/loader/loading-spinner.component";
-
+import {FormsModule} from "../UI/Material/Forms/forms.module";
+import {FooterComponent} from '../UI/Shared/footer/footer.component'
+import {ToolbarComponent} from "../UI/Shared/toolbar/toolbar.component";
+import {AccessDeniedComponent} from "../UI/Shared/access-denied/access-denied.component";
+import {NotFoundComponent} from "../UI/Shared/not-found/not-found.component";
+import {InterceptorInterceptor} from "./core/interceptors/interceptor.interceptor";
+import { UsersComponent } from './users/users/users.component';
+import { UserAddComponent } from './users/user-add/user-add.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserShowComponent } from './users/user-show/user-show.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +34,19 @@ import {LoadingSpinnerComponent} from "../UI/Shared/loader/loading-spinner.compo
     LoginComponent,
     SideNavComponent,
     BodyComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    FooterComponent,
+    ToolbarComponent,
+    AccessDeniedComponent,
+    NotFoundComponent,
+    UsersComponent,
+    UserAddComponent,
+    UserEditComponent,
+    UserShowComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NavigationModule,
@@ -43,9 +58,21 @@ import {LoadingSpinnerComponent} from "../UI/Shared/loader/loading-spinner.compo
     FormsModule,
 
 
+  ],
+  providers: [
+    CookieService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:InterceptorInterceptor,
+      multi:true
+    },
 
   ],
-  providers: [CookieService,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}],
 
   bootstrap: [AppComponent]
 })

@@ -6,32 +6,32 @@ export const navbarData = [
   },
   {
     routeLink: 'products',
-    icon: 'box-open',
+    icon: 'casino',
     label: 'Products'
   },
   {
     routeLink: 'statistics',
-    icon: 'chart-bar',
+    icon: 'business_center',
     label: 'Statistics'
   },
   {
     routeLink: 'coupens',
-    icon: 'tags',
+    icon: 'folder_special',
     label: 'Coupens'
   },
   {
     routeLink: 'pages',
-    icon: 'file',
+    icon: 'event_busy',
     label: 'Pages'
   },
   {
     routeLink: 'media',
-    icon: 'camera',
+    icon: 'apps',
     label: 'Media'
   },
   {
     routeLink: 'settings',
-    icon: 'cog',
+    icon: 'trip_origin',
     label: 'Settings'
   },
 ];

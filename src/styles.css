@@ -1,5 +1,5 @@
 :root {
-  --menu-width-open: 200px;
+  --menu-width-open: 180px;
   --menu-width-closed: 64px;
 }
 body {
@@ -11,6 +11,7 @@ body {
 }
 .mat-drawer-container.custom-drawer-container {
   top: 64px !important;
+  left: -60px !important;
 }
 .mat-drawer-container .mat-drawer {
   box-sizing: content-box;
@@ -18,7 +19,7 @@ body {
   transition: all 0.3s ease-in-out !important;
 }
 .mat-drawer-container .mat-drawer-content {
-  margin-left: var(--menu-width-open) !important;
+  margin-left: 0px!important;
   transition: all 0.3s ease-in-out !important;
 }
 .mat-drawer-container.container-closed .mat-drawer {

@@ -14,7 +14,6 @@ export class RoleGuard implements CanActivate {
    if(this.service.HaveAccess()){
     return true;
    }else{
-     this.route.navigate(['']);
      return false;
    }
   }
