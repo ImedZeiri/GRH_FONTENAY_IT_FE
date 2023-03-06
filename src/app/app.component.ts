@@ -1,19 +1,36 @@
 import {Component, DoCheck, EventEmitter, Output} from '@angular/core';
+import { SidePanelState, DashboardLayoutConfiguration, SidePanelPosition } from './core';
+import { NavigationLink } from '../UI/Shared';
+import {CookieService} from "ngx-cookie-service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-import {SideNavComponent} from '../UI/Shared/side-nav/side-nav.component'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements DoCheck {
-  @Output() onToggleSideNav: EventEmitter<SideNavComponent> = new EventEmitter();
-  title = 'GRH_FONTENAY_IT_FE';
+export class AppComponent {
+  public configuration: DashboardLayoutConfiguration;
+  public links: NavigationLink[];
   displayMenu=false;
-  constructor(private cookie:CookieService,private route:Router){
 
+
+  constructor(private cookie:CookieService,private route:Router) {
+    this.configuration = new DashboardLayoutConfiguration(
+      SidePanelPosition.LEFT,
+      SidePanelState.OPEN
+    );
+    this.createLinks();
+  }
+
+  private createLinks() {
+    this.links = [
+      new NavigationLink("Home", ['home'], "home"),
+      new NavigationLink("Dashboard", ['dashbaord'], "menu"),
+      new NavigationLink("Account Info", ['account'], "supervised_user_circle"),
+      new NavigationLink("Users", ['users'], "supervisor_account"),
+
+    ]
   }
   ngDoCheck(): void {
     if (this.route.url == '/login') {
@@ -22,5 +39,4 @@ export class AppComponent implements DoCheck {
       this.displayMenu = true
     }
   }
-
 }

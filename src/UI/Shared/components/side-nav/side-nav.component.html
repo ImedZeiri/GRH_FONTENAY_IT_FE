@@ -1,13 +1,4 @@
-<mat-sidenav-container fullscreen>
-  <div class="mat-toolbar-new">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon *ngIf="!Expanded" (click)="toggle(false)">menu</mat-icon>
-      <mat-icon *ngIf="Expanded" (click)="toggle(true)">clear</mat-icon>
-    </button>
-    <app-toolbar></app-toolbar>
-  </div>
-
-  <mat-sidenav #sidenav mode="side" class="example-sidenav" [ngStyle]="{ 'width.em': sidenavWidth}" opened="true" (mouseenter)="opacityUp()" (mouseleave)="opacityDown()">
+<mat-sidenav #sidenav mode="side" class="example-sidenav" [ngStyle]="{ 'width.em': sidenavWidth}" opened="true" (mouseenter)="opacityUp()" (mouseleave)="opacityDown()">
     <mat-nav-list *ngFor="let data of navData">
       <mat-list-item *ngIf="!Expanded"style="left: -3px">
             <mat-icon mat-list-icon [ngStyle]="{ 'opacity':opacityValue}" matTooltip="{{data.label}}" [matMenuTriggerFor]="menu">{{data.icon}}</mat-icon>
@@ -31,11 +22,3 @@
         </mat-accordion>
     </mat-nav-list>
   </mat-sidenav>
-
-
-
-
-    <div class="example-sidenav-content" [ngStyle]="{'left.em':sidenavWidth, 'width.em':103-sidenavWidth}">
-    <app-body>jahsdvjxm</app-body>
-  </div>
-</mat-sidenav-container>

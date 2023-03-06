@@ -1,16 +1,19 @@
-<app-toolbar *ngIf="displayMenu"></app-toolbar>
-
 <div *ngIf="displayMenu">
-
-    <app-side-nav></app-side-nav>
-
-    <div class="example-sidenav-content">
-      <app-body> body works </app-body>
+  <app-dashboard-layout [configuration]="configuration" >
+    <div container="sidePanel" >
+      <app-navigation-side-panel [links]="links"></app-navigation-side-panel>
     </div>
-
-
-
+    <div container="navigationBar">
+      <app-navigation-bar></app-navigation-bar>
+    </div>
+    <div container="mainContent" >
+      <router-outlet></router-outlet>
+    </div>
+    <div>
       <app-footer></app-footer>
-
+    </div>
+  </app-dashboard-layout>
 </div>
-<router-outlet></router-outlet>
+<div *ngIf="!displayMenu">
+  <app-login></app-login>
+</div>
