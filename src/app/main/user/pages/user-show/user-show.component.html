@@ -1,0 +1,22 @@
+<h1 mat-dialog-title
+    cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+    cdkDragBoundary=".cdk-overlay-container"
+    cdkDragHandle>
+  {{data.firstName}} details :
+</h1>
+<div mat-dialog-content>
+  <p>Username: {{ data.username }}</p>
+  <p>Email: {{ data.email }}</p>
+  <p>CIN: {{ data.cin }}</p>
+  <p>Role: {{ data.roles }}</p>
+  <p>hiringDate: {{ data.hiringDate }}</p>
+  <p>birthday: {{ data.birthday }}</p>
+  <p>userRights: {{ data.userRights }}</p>
+  <p>gender: {{ data.gender }}</p>
+  <p>tokenExpiresAt: {{ data.tokenExpiresAt }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">OK</button>
+</div>
+

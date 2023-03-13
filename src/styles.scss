@@ -2,7 +2,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css");
 
 $background: #F6F6F8;
-$font-color: #FFFF;
+$font-color: rgba(255, 255, 255, 0.05);
 
 html, body, ul, p, h1, h2, h3, h4, h5, h6, blockquote {
   margin: 0;
@@ -23,4 +23,8 @@ a {
   color: $font-color;
   font-weight: 400;
   text-decoration: none;
+}
+
+.backdrop-bg {
+  box-shadow: none !important;
 }

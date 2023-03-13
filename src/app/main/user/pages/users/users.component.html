@@ -1,0 +1,21 @@
+
+<button mat-button routerLink="add" color="primary">add</button>
+
+<div *ngIf="isLoading; else table">
+  <div *ngFor="let item of totalItem">
+    <app-content-loader></app-content-loader>
+  </div>
+</div>
+
+
+<table mat-table [class.clicked-outside]="isClickedOutside" [dataSource]="users" class="mat-elevation-z8">
+  <ng-template #table>
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
+      <td mat-cell *matCellDef="let user" (click)="onRowClicked(user,$event)">{{ user[column] }}</td>
+    </ng-container>
+  </ng-template>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

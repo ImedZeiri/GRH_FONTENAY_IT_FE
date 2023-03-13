@@ -26,8 +26,6 @@ export class AppComponent {
   private createLinks() {
     this.links = [
       new NavigationLink("Home", ['home'], "home"),
-      new NavigationLink("Dashboard", ['dashbaord'], "menu"),
-      new NavigationLink("Account Info", ['account'], "supervised_user_circle"),
       new NavigationLink("Users", ['users'], "supervisor_account"),
 
     ]

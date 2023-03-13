@@ -1,0 +1,67 @@
+@mixin sticky {
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+  .footer{
+    background-color: whitesmoke;
+    position: absolute;
+    color: rgb(58, 152, 185);
+    width: calc(100% - 250px);
+    top: 96%;
+    text-align:center;
+    padding-top: 0.9%;
+    box-shadow: rgba(0.1, 0.1, 0.1, 0.1) 5px 8px 10px -7px;
+  }
+
+  &.panel-position-left {
+    flex-direction: row;
+  }
+
+  &.panel-position-right {
+    flex-direction: row-reverse;
+  }
+
+
+  .left-column {
+    @include sticky();
+    top: 0;
+    transition: flex-basis 0.3s;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 8px 10px -7px;
+
+
+    &.open {
+      flex: 0 0 250px;
+    }
+
+    &.close {
+      flex: 0 0 0px;
+    }
+
+    &.collapse {
+      flex: 0 0 55px;
+    }
+  }
+
+  .right-column {
+    background-color: rgba(230, 243, 248, 0.27);
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    height: 96%;
+
+
+    .navigation-bar {
+      @include sticky();
+      top: 0;
+      z-index: 100;
+  }
+
+  }
+}

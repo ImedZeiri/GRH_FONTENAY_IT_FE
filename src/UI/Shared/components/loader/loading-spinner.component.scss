@@ -1,85 +1,78 @@
-$grey: rgba(0, 0, 0, .5);
-$blue: rgba(0, 0, 255, .5);
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate2 {
-  0% {
-    transform: rotate(0deg);
-    border-top-color: $grey;
-  }
-  50% {
-    transform: rotate(180deg);
-    border-top-color: $blue;
-  }
-  100% {
-    transform: rotate(360deg);
-    border-top-color: $grey;
-  }
-}
-
-* {
-  box-sizing: border-box;
-}
+$loading-font-size: 10px;
+$loading-color: rebeccapurple;
+$loading-icon-size: 24px;
+$animation-time: 1.5s;
+$overlay-color: white;
 
 body {
-  background: #f9f9f9;
-  padding-bottom: 100px;
+  background: #000
 }
 
-h1, h3 {
-  display: block;
-  margin: 0px auto;
-  text-align: center;
-  font-family: 'Tahoma';
-  font-weight: lighter;
-  color: $grey;
-  letter-spacing: 1.5px;
+@keyframes fadein {
+  from {
+    opacity:0
+  }
+  to {
+    opacity:1
+  }
 }
-
-h1 {
-  margin: 50px auto;
-}
-
-@mixin loaderDivMixin {
-  border-radius: 50%;
-  padding: 8px;
-  border: 2px solid transparent;
-  animation: rotate linear 3.5s infinite;
-}
-
-.loader {
-  position: relative;
-  margin: 300px auto;
-  width: 150px;
-  height: 150px;
-  display: block;
-  overflow: hidden;
-  div {
-    height: 100%;
+@keyframes spin {
+  0%,100% {
+    transform: rotate(0deg) scale(1)
+  }
+  50%     {
+    transform: rotate(720deg) scale(0.5)
   }
 }
 
-/* loader 1 */
-.loader1, .loader1 div {
-  @include loaderDivMixin;
-  border-top-color: $grey;
-  border-bottom-color: $blue;
-}
-div:hover {
-  animation-play-state: paused;
+@keyframes pulse {
+  0%,100% {
+    letter-spacing: $loading-font-size/2;
+    left: calc(50% + (#{$loading-font-size}/2));
+  }
+  50% {
+    letter-spacing: $loading-font-size/4;
+    left: 50%;
+  }
 }
 
-.loader, .loader * {
-  will-change: transform;
+.loading {
+  animation: fadein 2s;
+}
+
+.spinner-wrapper {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: $overlay-color;
+  position: absolute;
+  z-index: 15;
+}
+
+.spinner-text {
+  position: absolute;
+  top: calc(50% - (#{$loading-font-size}/2));
+  left: 50%;
+  color: $loading-color;
+  text-transform: uppercase;
+  letter-spacing: $loading-font-size/4;
+  font: bold $loading-font-size sans-serif;
+  transform: translate3d(-50%,-50%);
+  animation: pulse $animation-time infinite;
+}
+
+.spinner {
+  margin: 0;
+  display: block;
+  position: absolute;
+  left: calc(50% - (#{$loading-icon-size}*2.5));
+  top: calc(50% - #{$loading-icon-size});
+  border: $loading-icon-size solid $loading-color;
+  width: 1px;
+  height: 1px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50px;
+  animation: spin $animation-time infinite;
 }

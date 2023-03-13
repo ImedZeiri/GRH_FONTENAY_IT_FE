@@ -1,0 +1,33 @@
+<mat-toolbar class="navigation-top-bar">
+  <div class="toggler" role="button">
+    <mat-icon singleDoubleClick
+              (onSingleClick)="handleSingleClick()"
+              (onDoubleClick)="handleDoubleClick()"
+              >
+      {{menuIcon}}
+    </mat-icon>
+  </div>
+  <span class="example-spacer"></span>
+    <button class="profil-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <div class="circle" [ngStyle]="{'background': color}">
+        <span class="initials">
+          <h1>{{getUsername() | firstLetter}}</h1>
+        </span>
+      </div>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item disabled>
+        <mat-icon>build</mat-icon>
+        <span>Setting</span>
+      </button>
+      <button mat-menu-item routerLink="login">
+        <mat-icon>
+          <span class="material-icons-outlined">logout</span>
+        </mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  <div class="navigation-extended">
+    <ng-content select="[panel=navigationExtended"></ng-content>
+  </div>
+</mat-toolbar>

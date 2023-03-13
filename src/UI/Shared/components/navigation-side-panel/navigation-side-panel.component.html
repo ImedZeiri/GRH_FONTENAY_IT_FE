@@ -1,0 +1,47 @@
+<div class="navigation-panel" [ngStyle]="{ 'background':colorValue}" >
+  <div class="navigation-panel-brand">F<span [ngClass]="currentPanelState">ontenay-IT</span></div>
+  <ul class="navigation-panel-menu" *ngIf="links && links.length > 0 && swith()==true ">
+    <mat-nav-list class="navlist" *ngFor="let link of links">
+      <mat-expansion-panel hideToggle class="ex-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title [routerLinkActive]="['active2']"
+                           [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon [routerLinkActive]="['active']"
+                      [routerLinkActiveOptions]="{exact: true}">{{link.iconClass}}</mat-icon>
+            <a class="text-expansion" [routerLink]="link.url">
+              <span [ngClass]="currentPanelState">{{ link.text }}</span>
+            </a>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list class="ex-panel">
+          <a mat-list-item routerLink="users" [routerLinkActive]="['active2']"
+             [routerLinkActiveOptions]="{exact: true}">Item Three</a>
+          <a mat-list-item>Item Four</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </ul>
+  <ul class="navigation-panel-menu" *ngIf="links && links.length > 0 && swith()==false">
+    <mat-nav-list class="navlist">
+      <mat-list-item class="listitemCustom" *ngFor="let link of links"
+                     [routerLinkActive]="['active']"
+                     [routerLinkActiveOptions]="{exact: true}">
+        <button mat-icon-button class="navlistMenu" >
+          <mat-icon mat-list-icon class="navlist-icon"
+                    [matTooltip]="link.text"
+                    [routerLink]="link.url"
+                    [routerLinkActive]="['active']"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    [matMenuTriggerFor]="menu"
+          >{{link.iconClass}}</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="users/add">Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </mat-list-item>
+    </mat-nav-list>
+  </ul>
+</div>
+
+

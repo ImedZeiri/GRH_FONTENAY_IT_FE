@@ -1,0 +1,43 @@
+h1 { font-family: Lato; }
+table {
+  position: relative;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
+}
+th{
+  background-color: rgba(51, 102, 153, 0.2);
+  color: #369;
+  font-size: 13px;
+  font-family: "Times New Roman", Times, serif;
+}
+td{
+  font-family: Arial;
+  color: #030f23;
+  font-size: 12px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.hidden-row {
+  display: none;
+}
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.clicked-outside {
+  animation-name: example;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes example {
+  from {width: 100%;}
+  to {width: 77%;}
+}
+

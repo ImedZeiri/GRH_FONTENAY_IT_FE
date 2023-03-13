@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,14 @@ export class AuthService {
    }
 
    GetRefreshToken(){
-    return localStorage.getItem('refresh_token')||'';
-   }
+     const refreshToken = localStorage.getItem('refresh_token');
+
+     return this.http.post(`${this.apiurl}/token/refresh`, { refreshToken }).pipe(
+       tap(response => {
+         const authToken = response['token'];
+         localStorage.setItem('token', authToken);
+       })
+     );   }
 
    HaveAccess(){
      var loggintoken=localStorage.getItem('token')||'';
