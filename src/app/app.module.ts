@@ -31,6 +31,8 @@ import { AccountInfoComponent } from './pages/account-info.component';
 import { DashboardComponent } from './pages/dashboard.component';
 import { HomeComponent } from './pages/home.component';
 import {ToastrModule} from "ngx-toastr";
+import {HeadersInterceptor} from "./core/interceptors/headers.interceptor";
+import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -72,7 +74,12 @@ import {ToastrModule} from "ngx-toastr";
     CookieService,
     {
       provide:HTTP_INTERCEPTORS,
-      useClass:TokenInterceptorService,
+      useClass:HeadersInterceptor,
+      multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
       multi:true
     }
 

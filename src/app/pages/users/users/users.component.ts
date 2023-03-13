@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  public data: any[];
+  public data: Object;
   constructor( private service:UsersService) { }
 
   ngOnInit(): void {
@@ -18,6 +18,7 @@ export class UsersComponent implements OnInit {
   getUsers(){
     this.service.getUsers().subscribe((res)=>{
       this.data = res['hydra:member'];
+      this.data = res.valueOf();
       }, error => {
       console.log(error);
     });

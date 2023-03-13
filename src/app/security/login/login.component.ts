@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   decodedToken:any;
   helper = new JwtHelperService;
   error : string ='';
+
   constructor(private service: AuthService ,private route:Router ,private toastr: ToastrService) {
     localStorage.clear();
   }
@@ -50,12 +51,11 @@ export class LoginComponent implements OnInit {
           console.log(this.responsedata.token);
           console.log(this.decodedToken.username);
           this.isLoading = false;
-          this.showSuccess("Login successfully !!", "success");
+          alert('login sucess')
         }
-        else if (result['hydra:ok'] == false){
+        else {
           this.error = 'Login failed';
           this.isLoading = false;
-          this.showError("Login failed !!", "failed");
           window.location.reload();
         }
       });
