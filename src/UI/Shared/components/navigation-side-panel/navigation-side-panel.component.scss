@@ -1,98 +1,33 @@
-$text-color-brand: #1f1414;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+$text-color: #7d84ab;
+$secondary-text-color: #dee2ec;
+$bg-color: #0c1e35;
+$sidebar-header-height: 100px;
+$sidebar-footer-height: 230px;
 
 
-.navigation-panel {
-  background: transparent;
-  overflow: hidden;
-  height: 100vh;
-
-
-  .navigation-panel-brand {
-    height: 75px;
-    line-height: 50px;
-    padding-left: 1rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-
-    span {
-      transition: opacity 0.3s;
-
-      &.open {
-        opacity: 1;
-      }
-      &.close {
-        opacity: 0;
-      }
-      &.collapse {
-        opacity: 0;
-      }
-    }
-  }
-
-  .navigation-panel-brand,
-
-  .navigation-panel-menu > li {
-    animation: mymove1 5s infinite;
-    @keyframes mymove1 {
-      from {color: #6cb3c0;}
-      to {color: #1976d2;}
-    }
-    background-color: #233142;
-    height: 55px;
-    color: #dbd8e3;
-  }
-
-  .navigation-panel-menu {
-    .navlist {
-      a {
-        padding-left: 1.8rem;
-        text-transform: uppercase;
-        transition: background 0.2s;
-
-        span {
-          transition: opacity 0.2s;
-
-          &.open {
-            opacity: 1;
-          }
-          &.close {
-            opacity: 0;
-          }
-          &.collapse {
-            opacity: 0;
-          }
-        }
-      }
-      &:hover {
-        background: transparent;
-      }
-
-      .active {
-        background-color: #fafafa;
-        color: #1976d2;
-      }
-      .active2 {
-        color: #c06c84;
-        .text-expansion{
-          text-align: end;
-        }
-      }
-    }
-  }
+.active {
+  background-color: #b20a45;
+  background: radial-gradient(ellipse at top, #345 0%, #123 100%);
 }
-
+.active1{
+  color: white !important;
+}
+.active2 {
+  color: white !important;
+}
+.text-expansion{
+  display: block;
+  margin-left: 9px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: $text-color;
+}
 .navlistMenu {
   border: 0px;
   background: transparent;
 }
 
-.ex-panel {
-  background-color: transparent;
-  .text-expansion{
-    text-align: end;
-  }
-  margin-top: -10px;
-}
 
 .navlist-icon {
   cursor: pointer;
@@ -103,4 +38,104 @@ $text-color-brand: #1f1414;
   color: white;
   left: -10px!important;
   width: 100px!important;
+}
+
+.layout {
+  z-index: 1;
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  .content {
+    padding: 12px 50px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter", sans-serif;
+
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+}
+
+
+.sidebar {
+  color: $text-color;
+  overflow-x: hidden !important;
+  position: relative;
+  height: 100vh;
+
+  .sidebar-layout {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: $bg-color;
+    z-index: 2;
+
+    .sidebar-header {
+      height: $sidebar-header-height;
+      min-height: $sidebar-header-height;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+    .sidebar-content {
+      flex-grow: 1;
+      padding: 10px 0;
+
+    }
+  }
+}
+
+
+
+
+
+.layout {
+  .sidebar {
+    .pro-sidebar-logo {
+      display: flex;
+
+      > div {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        background-color: #ff8100;
+        margin-right: 10px;
+      }
+
+      > h5 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 20px;
+        line-height: 30px;
+        transition: opacity 0.3s;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.mat-expansion-panel {
+  background-color: transparent;
+  color: $secondary-text-color;
+}
+.mat-expansion-panel-header{
+  font-family: "Inter", sans-serif;
+  color: $text-color;
+  font-size: 17px;
 }

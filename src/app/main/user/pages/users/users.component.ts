@@ -5,7 +5,6 @@ import {UserShowComponent} from "../user-show/user-show.component";
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { NgDialogAnimationService } from 'ng-dialog-animation';
 import {SidePanelService, SidePanelState} from "../../../../core";
-import {UserAddComponent} from "../user-add/user-add.component";
 
 @Component({
   selector: 'app-users',
@@ -82,21 +81,6 @@ export class UsersComponent implements OnInit {
       }
   }
 
-  AddDialog() {
-    const dialogRef = this.ngdialog.open(UserAddComponent, {
-      width: '300px',
-      height:'80%',
-      autoFocus: false,
-      data: this.selectedRow,
-      position: {
-        right: '0px',
-        top: '13vh',
-      },
-      animation: { to: 'left'},
-      backdropClass:'backdrop-bg',
-    });
-  }
-
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     if (this.selectedRow && this.elementRef.nativeElement.contains(event.target)) {
@@ -106,6 +90,5 @@ export class UsersComponent implements OnInit {
       this.isClickedOutside = false;
     }
   }
-
 
 }

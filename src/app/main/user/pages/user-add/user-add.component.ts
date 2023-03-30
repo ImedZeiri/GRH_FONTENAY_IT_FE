@@ -6,13 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent implements OnInit {
-  name: string;
-  description: string;
   constructor() { }
 
   ngOnInit(): void {
   }
-  onSubmit() {
-    console.log(this.name)
-  }
+
 }

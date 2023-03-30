@@ -30,7 +30,7 @@ import {CommonModule} from "@angular/common";
 import {UserModule} from "./main/user/user.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {HomeComponent} from "./main/home/pages/home/home.component";
-import {WidgetComponent} from "../UI/Shared/components/widget/widget.component";
+import {WidgetComponent} from "./main/home/components/widget/widget.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({

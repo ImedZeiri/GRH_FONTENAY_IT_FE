@@ -1,27 +1,35 @@
-<div class="navigation-panel" [ngStyle]="{ 'background':colorValue}" >
-  <div class="navigation-panel-brand">F<span [ngClass]="currentPanelState">ontenay-IT</span></div>
-  <ul class="navigation-panel-menu" *ngIf="links && links.length > 0 && swith()==true ">
-    <mat-nav-list class="navlist" *ngFor="let link of links">
-      <mat-expansion-panel hideToggle class="ex-panel">
-        <mat-expansion-panel-header>
-          <mat-panel-title [routerLinkActive]="['active2']"
-                           [routerLinkActiveOptions]="{exact: true}">
-            <mat-icon [routerLinkActive]="['active']"
-                      [routerLinkActiveOptions]="{exact: true}">{{link.iconClass}}</mat-icon>
-            <a class="text-expansion" [routerLink]="link.url">
-              <span [ngClass]="currentPanelState">{{ link.text }}</span>
-            </a>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list class="ex-panel">
-          <a mat-list-item routerLink="users" [routerLinkActive]="['active2']"
-             [routerLinkActiveOptions]="{exact: true}">Item Three</a>
-          <a mat-list-item>Item Four</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-nav-list>
-  </ul>
-  <ul class="navigation-panel-menu" *ngIf="links && links.length > 0 && swith()==false">
+<div class="layout has-sidebar fixed-sidebar fixed-header">
+  <aside id="sidebar" class="sidebar break-point-sm has-bg-image">
+    <div class="sidebar-layout">
+      <div class="sidebar-header">
+        <div class="pro-sidebar-logo">
+          <div>F</div>
+          <h5 [ngStyle]="{ 'opacity':opacity}">Fontenay-IT</h5>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <ul class="navigation-panel-menu" *ngIf="links && links.length > 0 && swith()==true ">
+          <mat-nav-list class="navlist">
+            <mat-accordion>
+              <mat-expansion-panel class="mat-expansion-panel" *ngFor="let link of links">
+                <mat-expansion-panel-header class="mat-expansion-panel-header"
+                                            [routerLink]="link.url"
+                                            [routerLinkActive]="['active2']"
+                                            [routerLinkActiveOptions]="{exact: true}">
+                  {{link.text}}
+                </mat-expansion-panel-header>
+                <a class="text-expansion" [routerLink]="link.url"
+                   [routerLinkActive]="['active2']"
+                   [routerLinkActiveOptions]="{exact: true}">
+                  <span [ngClass]="currentPanelState">{{ link.text }}</span>
+                </a>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-nav-list>
+        </ul>
+        <ul class="navigation-panel-menu" *ngIf="links && links.length > 0 && swith()==false">
     <mat-nav-list class="navlist">
       <mat-list-item class="listitemCustom" *ngFor="let link of links"
                      [routerLinkActive]="['active']"
@@ -30,8 +38,6 @@
           <mat-icon mat-list-icon class="navlist-icon"
                     [matTooltip]="link.text"
                     [routerLink]="link.url"
-                    [routerLinkActive]="['active']"
-                    [routerLinkActiveOptions]="{exact: true}"
                     [matMenuTriggerFor]="menu"
           >{{link.iconClass}}</mat-icon>
         </button>
@@ -42,6 +48,6 @@
       </mat-list-item>
     </mat-nav-list>
   </ul>
+      </div>
+
 </div>
-
-

@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { SidePanelService, SidePanelState } from '../../../../app/core';
 import { NavigationLink } from './navigation-link.model';
-
 @Component({
   selector: 'app-navigation-side-panel',
   templateUrl: './navigation-side-panel.component.html',
@@ -16,7 +15,7 @@ export class NavigationSidePanelComponent implements OnInit, OnDestroy {
   private _subscriptionsSubject$: Subject<void>;
   public currentPanelState: SidePanelState;
   public SidePanelState = SidePanelState;
-  colorValue: any;
+  opacity: any;
 
   constructor(private _sidePanelService: SidePanelService) {
     this._subscriptionsSubject$ = new Subject<void>();
@@ -31,10 +30,10 @@ export class NavigationSidePanelComponent implements OnInit, OnDestroy {
 
   public swith() {
     if (this.currentPanelState === SidePanelState.CLOSE || this.currentPanelState === SidePanelState.COLLAPSE) {
-      this.colorValue = '#233142';
+      this.opacity = 1;
       return true;
     } else {
-      this.colorValue = '#f1f2f6';
+      this.opacity = 0;
       return false;
     }
   }
@@ -44,3 +43,5 @@ export class NavigationSidePanelComponent implements OnInit, OnDestroy {
     this._subscriptionsSubject$.complete();
   }
 }
+
+

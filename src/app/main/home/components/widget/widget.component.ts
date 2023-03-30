@@ -10,9 +10,16 @@ export class WidgetComponent implements OnInit {
   @Input() iconClass = 'fas fa-users';
   @Input() value = '';
   @Input() label = 'Statistique';
+  animationPlayed: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
-}
+  ngAfterViewInit(): void {
+    if (!localStorage.getItem('animationPlayed')){
+      const element = document.querySelector('.widget') as HTMLElement;
+      element.style['animation-play-state'] = 'paused';
+      localStorage.setItem('animationPlayed', 'true');
+    }
+  }
+  }
