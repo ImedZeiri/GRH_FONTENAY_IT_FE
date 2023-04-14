@@ -1,4 +1,14 @@
+.container {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
 h1 { font-family: Lato; }
+
 table {
   position: relative;
   width: 100%;
@@ -41,6 +51,74 @@ tr:hover {
   to {width: 77%;}
 }
 
+.user-widget {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+
+.user-widget h2 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.user-widget p {
+  font-size: 18px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.AddButton {
+  color: #0D0C1E;
+  cursor: pointer;
+
+}
+
+.delButton {
+  color: #f34642;
+  cursor: pointer;
+}
+.UpdateButton {
+  padding-left: 15px;
+  color: #003a98;
+  cursor: pointer;
+}
+.mat-form-field-filter {
+  width: 100%;
+}
 
 
+.topPanel {
+  background-color: #2A7689;
+  background-repeat: no-repeat;
+  background-position: top right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  height: 90px;
+}
 
+.topPanel__left {
+  margin-left: 20px;
+}
+
+.topPanel__button {
+  background-color: rgba(13, 12, 30, 0.84);
+  color: #f7f1e5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.topPanel__button:hover {
+  background-color: rgba(13, 12, 30, 0.57);
+}
+
+.topPanel__right {
+  margin-right: 20px;
+}

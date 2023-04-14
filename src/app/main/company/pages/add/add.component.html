@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>Ajouter une entreprise</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="AddCompanyForm" (ngSubmit)="onSubmit(AddCompanyForm)">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <input matInput formControlName="category">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Website</mat-label>
+        <input matInput formControlName="website">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Capacity</mat-label>
+        <input matInput type="number" formControlName="capacity">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tax Number</mat-label>
+        <input matInput type="number" formControlName="taxNumber">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Identity Number</mat-label>
+        <input matInput type="number" formControlName="identityNumber">
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>deletedFileExpiration</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="deleted_file_expiration">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Ajouter</button>
+    </form>
+  </mat-card-content>
+</mat-card>

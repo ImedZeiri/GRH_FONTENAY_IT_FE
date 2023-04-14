@@ -16,7 +16,7 @@ export class HeadersInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     const token = localStorage.getItem('token')
-    if (!request.url.includes('/login')&& !request.url.includes('/token/refresh')) {
+    if (!request.url.includes('/company')) {
       if (token) {
         request = request.clone({
           setHeaders: {
@@ -28,7 +28,8 @@ export class HeadersInterceptor implements HttpInterceptor {
     return next.handle(request.clone({
       setHeaders: {
         Authorization: `Bearer ${this.authService.GetToken()}`,
-        'Content-Type': 'application/json'
+        'Content-Type':  'application/ld+json',
+        'Accept': 'application/ld+json'
       }
     }));
   }

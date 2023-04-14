@@ -17,29 +17,29 @@ body {
 [mat-dialog-title] {
   margin: -24px -24px 0px -24px !important;
   padding: 10px 24px;
-  background: #369;
+  background: #0c1e35;
   color: #fff;
 }
 [mat-dialog-content]{
   margin: -1px -24px -24px -24px !important;
-  padding-top: 100px;
+  padding-top: 60px;
   padding-right: 30px;
-  padding-bottom: 188px;
+  padding-bottom: 105px;
   padding-left: 8px;
   background: whitesmoke;
-  color: #369;
+  color: black;
 }
 [mat-dialog-actions]{
   margin: -24px -24px -24px -24px !important;
   padding: 8px 24px;
-  background: #369;
+  background: #0c1e35;
   color: #fff;
 }
 button{
   border: 1px;
   border-radius: 10px;
-  background: #369;
-  color: #ffffff;
+  background: #0c1e35 !important;
+  color: white !important;
   font-size: 12px;
   font-weight: bold;
   padding: 12px 120px;

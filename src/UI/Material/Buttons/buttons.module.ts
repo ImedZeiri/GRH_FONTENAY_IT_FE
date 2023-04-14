@@ -8,6 +8,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {PortalModule} from "@angular/cdk/portal";
+import {MatSortModule} from "@angular/material/sort";
+import {MatTableModule} from "@angular/material/table";
+import {MatInputModule} from "@angular/material/input";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -32,6 +42,16 @@ import { MatRippleModule } from '@angular/material/core';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatRippleModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    PortalModule,
+    MatSortModule,
+    MatTableModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatListModule,
   ]
 })
 export class ButtonsModule { }

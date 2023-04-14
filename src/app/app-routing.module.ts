@@ -6,13 +6,14 @@ import {LoginComponent} from "./main/login/page/login.component";
 import {NotFoundComponent} from "../UI/Shared/components/not-found/not-found.component";
 import {UserRoutingModule} from "./main/user/user-routing.module";
 import {HomeRoutingModule} from "./main/home/home-routing.module";
+import {CompanyRoutingModule} from "./main/company/company-routing.module";
 
 
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: '**',
@@ -24,7 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: false}),
-    UserRoutingModule,HomeRoutingModule],
+    UserRoutingModule,CompanyRoutingModule,HomeRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

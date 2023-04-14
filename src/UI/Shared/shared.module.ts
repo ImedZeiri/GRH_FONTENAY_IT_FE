@@ -12,12 +12,14 @@ import {CoreModule} from "../../app/core/core.module";
 import {PopupsModule} from "../Material/Popups/popups.module";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
+import {ContentLoaderComponent} from "./components/content-loader/content-loader.component";
 
 @NgModule({
   declarations: [
     NavigationBarComponent,
     NavigationSidePanelComponent,
-    SingleDoubleClickDirective
+    SingleDoubleClickDirective,
+    ContentLoaderComponent
   ],
   imports: [
     CommonModule,
@@ -28,12 +30,13 @@ import {FormsModule} from "@angular/forms";
     CoreModule,
     PopupsModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     NavigationBarComponent,
     NavigationSidePanelComponent,
-    SingleDoubleClickDirective
+    SingleDoubleClickDirective,
+    ContentLoaderComponent,
   ]
 })
 export class SharedModule { }

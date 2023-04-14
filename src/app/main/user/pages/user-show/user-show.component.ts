@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
-  selector: 'app-user-show',
+  selector: 'app-show',
   templateUrl: './user-show.component.html',
   styleUrls: ['./user-show.component.css']
 })

@@ -7,4 +7,8 @@ export class Users {
   cin: string;
   hiringDate: Date;
   roles: [];
+
+  phone: string;
+
+  first_name: string;
 }

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   decodedToken:any;
   helper = new JwtHelperService;
   error : string ='';
+  Authorized: boolean;
 
   constructor(private service: AuthService ,private route:Router ,private toastr: ToastrService) {
     localStorage.clear();
@@ -46,10 +47,6 @@ export class LoginComponent implements OnInit {
           this.decodedToken = this.helper.decodeToken(this.responsedata.token);
           localStorage.setItem('username',this.decodedToken.username);
           this.route.navigate(['home']);
-          console.log("done !!");
-          console.log(this.responsedata.refresh_token);
-          console.log(this.responsedata.token);
-          console.log(this.decodedToken.username);
           this.isLoading = false;
           alert('login sucess')
         }

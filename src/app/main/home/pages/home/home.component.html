@@ -1,7 +1,27 @@
 <div class="container">
-  <app-widget [background]="'linear-gradient(to right, #141e30, #243b55)'" [iconClass]="'fas fa-users'" [value]="'3'" [label]="'Total users'"></app-widget>
-  <app-widget [background]="'linear-gradient(to right, #000428, #004e92)'" [iconClass]="'fas fa-user-friends'" [value]="'3'" [label]="'Active users'"></app-widget>
-  <app-widget [background]="'linear-gradient(to right, #41295a, #2f0743)'" [iconClass]="'fas fa-chart-line'" [value]="'3'" [label]="'Growth'"></app-widget>
+  <div class="item header">
+    <app-widget [name]="'Companies'"
+                [value]="companyTasksCount.toString()"
+                [label]="'list'">
+    </app-widget>
+    <app-widget [name]="'Users'"
+                [value]="usersCount.toString()"
+                [label]="'Total list'">
+    </app-widget>
+    <app-widget [name]="'Projects'"
+                [value]="projectsCount.toString()"
+                [label]="'Total list'">
+    </app-widget>
+  </div>
+  <div class="item sidebar">
+    <app-top-users></app-top-users>
+  </div>
+  <div class="item content-1">Content-1</div>
+  <div class="item content-2">Content-2</div>
+  <div class="item content-3">Content-3</div>
+  <div class="item footer">footer</div>
 </div>
+
+
 
 

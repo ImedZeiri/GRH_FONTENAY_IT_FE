@@ -13,10 +13,13 @@
           <mat-nav-list class="navlist">
             <mat-accordion>
               <mat-expansion-panel class="mat-expansion-panel" *ngFor="let link of links">
+
                 <mat-expansion-panel-header class="mat-expansion-panel-header"
                                             [routerLink]="link.url"
                                             [routerLinkActive]="['active2']"
                                             [routerLinkActiveOptions]="{exact: true}">
+                  <mat-icon mat-list-icon class="navlist-icon"[routerLinkActive]="['active2']"
+                            [routerLinkActiveOptions]="{exact: true}">{{link.iconClass}}</mat-icon>
                   {{link.text}}
                 </mat-expansion-panel-header>
                 <a class="text-expansion" [routerLink]="link.url"

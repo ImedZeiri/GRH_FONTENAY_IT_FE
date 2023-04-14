@@ -8,7 +8,7 @@ import {UserShowComponent} from "./pages/user-show/user-show.component";
 import {UserEditComponent} from "./pages/user-edit/user-edit.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "../../app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {NavigationModule} from "../../../UI/Material/Navigation/navigation.module";
@@ -18,12 +18,26 @@ import {LayoutModule} from "../../../UI/Material/Layout/layout.module";
 import {DatatableModule} from "../../../UI/Material/DataTables/datatable.module";
 import {PopupsModule} from "../../../UI/Material/Popups/popups.module";
 import {CoreModule} from "../../core/core.module";
-import {SharedModule} from "../../../UI/Shared/shared.module";
-import {ContentLoaderComponent} from "../../../UI/Shared/components/content-loader/content-loader.component";
-import {WidgetComponent} from "../home/components/widget/widget.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {PortalModule} from "@angular/cdk/portal";
+import {MatSortModule} from "@angular/material/sort";
+import {MatTableModule} from "@angular/material/table";
+import {MatInputModule} from "@angular/material/input";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {WidgetComponent} from "./components/widget/widget.component";
+import { CustomCardComponent } from './components/custom-card/custom-card.component';
+import {CookieService} from "ngx-cookie-service";
+import {HeadersInterceptor} from "../../core/interceptors/headers.interceptor";
+import {CompanyModule} from "../company/company.module";
+import {SharedModule} from "../../../UI/Shared/shared.module";
+
+
 
 
 @NgModule({
@@ -32,7 +46,8 @@ import {MatRadioModule} from "@angular/material/radio";
     UserAddComponent,
     UserShowComponent,
     UserEditComponent,
-    ContentLoaderComponent,
+    WidgetComponent,
+    CustomCardComponent,
   ],
   imports: [
     CommonModule,
@@ -51,14 +66,38 @@ import {MatRadioModule} from "@angular/material/radio";
     FormsModule,
     AppRoutingModule,
     BrowserModule,
-    FormsModule,
     CoreModule,
-    SharedModule,
-    FormsModule,
-    FormsModule,
     MatDatepickerModule,
     ReactiveFormsModule,
     MatRadioModule,
+    MatDatepickerModule,
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatTableModule,
+    MatSelectModule,
+    MatSortModule,
+    PortalModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    AppRoutingModule,
+    FormsModule,
+    CompanyModule,
+    SharedModule
+  ],
+  providers: [
+    CookieService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:HeadersInterceptor,
+      multi:true
+    },
   ]
 })
 export class UserModule { }

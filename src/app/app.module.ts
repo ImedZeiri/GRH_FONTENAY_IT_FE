@@ -24,14 +24,14 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from '../UI/Shared/shared.module';
 
 import {ToastrModule} from "ngx-toastr";
-import {HeadersInterceptor} from "./core/interceptors/headers.interceptor";
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 import {CommonModule} from "@angular/common";
 import {UserModule} from "./main/user/user.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {HomeComponent} from "./main/home/pages/home/home.component";
-import {WidgetComponent} from "./main/home/components/widget/widget.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {CompanyModule} from "./main/company/company.module";
+import {HomeModule} from "./main/home/home.module";
 
 @NgModule({
   declarations: [
@@ -44,47 +44,41 @@ import {ReactiveFormsModule} from "@angular/forms";
     AppComponent,
     HomeComponent,
     FooterComponent,
-    WidgetComponent
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    NavigationModule,
-    MatSelectModule,
-    ButtonsModule,
-    LayoutModule,
-    DatatableModule,
-    PopupsModule,
-    FormsModule,
-    AppRoutingModule,
-    BrowserModule,
-    FormsModule,
-    CoreModule,
-    SharedModule,
-    CommonModule,
-    UserModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        NavigationModule,
+        MatSelectModule,
+        ButtonsModule,
+        LayoutModule,
+        DatatableModule,
+        PopupsModule,
+        FormsModule,
+        AppRoutingModule,
+        BrowserModule,
+        FormsModule,
+        CoreModule,
+        SharedModule,
+        CommonModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        UserModule,
+        CompanyModule,
+        HomeModule,
 
-
-  ],
+    ],
   providers: [
     CookieService,
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:HeadersInterceptor,
-      multi:true
-    },
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
     }
-
   ],
 
   bootstrap: [AppComponent]

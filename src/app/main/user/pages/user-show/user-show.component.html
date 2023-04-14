@@ -6,16 +6,17 @@
   {{data.firstName}} details :
 </h1>
 <div mat-dialog-content>
-  <p>Username: {{ data.username }}</p>
-  <p>Email: {{ data.email }}</p>
-  <p>CIN: {{ data.cin }}</p>
-  <p>Role: {{ data.roles }}</p>
-  <p>hiringDate: {{ data.hiringDate }}</p>
-  <p>birthday: {{ data.birthday }}</p>
-  <p>userRights: {{ data.userRights }}</p>
-  <p>gender: {{ data.gender }}</p>
-  <p>tokenExpiresAt: {{ data.tokenExpiresAt }}</p>
+  <p><mat-icon>person</mat-icon> Username: {{ data.username }}</p>
+  <p><mat-icon>email</mat-icon> Email: {{ data.email }}</p>
+  <p><mat-icon>credit_card</mat-icon> CIN: {{ data.cin }}</p>
+  <p><mat-icon>lock</mat-icon> Role: {{ data.roles }}</p>
+  <p><mat-icon>today</mat-icon> hiringDate: {{ data.hiringDate }}</p>
+  <p><mat-icon>cake</mat-icon> birthday: {{ data.birthday }}</p>
+  <p><mat-icon>verified_user</mat-icon> userRights: {{ data.userRights }}</p>
+  <p><mat-icon>wc</mat-icon> gender: {{ data.gender }}</p>
+  <p><mat-icon>timer</mat-icon> tokenExpiresAt: {{ data.tokenExpiresAt }}</p>
 </div>
+
 <div mat-dialog-actions>
   <button mat-raised-button (click)="onNoClick()">OK</button>
 </div>
