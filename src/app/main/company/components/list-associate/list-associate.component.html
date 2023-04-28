@@ -1,0 +1,22 @@
+<div class="card front" *ngIf="!associates">
+  <div class="blue"></div>
+  <div class="yellow"></div>
+  <div class="pink"></div>
+  <div class="dots"></div>
+  <div class="personal-intro">
+    <p>Select Company </p>
+    <p>To see Company association details </p>
+  </div>
+</div>
+<div class="card back">
+  <div class="yellow"></div>
+  <div class="top dots"></div>
+  <div class="personal-info" *ngFor="let associate of associates">
+    <p>{{ associate.principal }}</p>
+    <p>{{ associate.principal }}</p>
+    <p>{{ associate.id }}</p>
+    <p>{{ associate.social_part }}</p>
+  </div>
+  <div class="bottom dots"></div>
+  <div class="pink"></div>
+</div>

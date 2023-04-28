@@ -1,0 +1,58 @@
+<form [formGroup]="EditUserForm" (ngSubmit)="onUpdateCompany(EditUserForm)">
+  <h1>Update User</h1>
+  <mat-form-field>
+    <input type="text" matInput formControlName="firstName" placeholder="Firstname" [(ngModel)]="user.firstName">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput formControlName="lastName" placeholder="Lastname"   autocomplete="on">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput formControlName="email" placeholder="Email"   autocomplete="on">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput formControlName="password" placeholder="password"   autocomplete="on">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select disableRipple formControlName="gender">
+      <mat-option value="male">Male</mat-option>
+      <mat-option value="female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Birthday</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthdayss">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="number" matInput formControlName="cin" placeholder="CIN"   autocomplete="on">
+  </mat-form-field>
+  <mat-form-field>
+    <span matPrefix>+216 &nbsp;</span>
+    <input type="tel" matInput formControlName="phone" placeholder="555-555-1234">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Hiring date</mat-label>
+    <input matInput [matDatepicker]="pickerHiring" formControlName="hiring_datess">
+    <mat-datepicker-toggle matSuffix [for]="pickerHiring"></mat-datepicker-toggle>
+    <mat-datepicker #pickerHiring></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Role</mat-label>
+    <mat-select disableRipple formControlName="roles">
+      <mat-option value="ROLE_USER">User</mat-option>
+      <mat-option value="ROLE_ADMIN">Admin</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Department</mat-label>
+    <mat-select formControlName="departments" multiple>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button type="submit" >Submit</button>
+</form>
+
+
+

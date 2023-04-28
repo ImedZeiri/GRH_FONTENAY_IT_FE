@@ -1,0 +1,26 @@
+<h1 mat-dialog-title
+    cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+    cdkDragBoundary=".cdk-overlay-container"
+    cdkDragHandle>
+  {{data.name}} details :
+</h1>
+<div mat-dialog-content>
+  <p><mat-icon>location_city</mat-icon> name: {{ data.name }}</p>
+  <p><mat-icon>email</mat-icon> Email: {{ data.email }}</p>
+  <p><mat-icon>my_location</mat-icon> location: {{ data.location }}</p>
+  <p><mat-icon>category</mat-icon> category: {{ data.category }}</p>
+  <p><mat-icon>website</mat-icon> website: {{ data.website }}</p>
+  <p><mat-icon>capacity</mat-icon> capacity: {{ data.capacity }}</p>
+  <p><mat-icon>tax_number</mat-icon> tax_number: {{ data.tax_number }}</p>
+  <p><mat-icon>business_center</mat-icon> identity_number: {{ data.identity_number }}</p>
+  <p><mat-icon>taxNumber</mat-icon> taxNumber: {{ data.taxNumber }}</p>
+  <p><mat-icon>users</mat-icon> companyAssociates: {{ data.companyAssociates }}</p>
+  <p><mat-icon>timer_off</mat-icon> deletedFileExpiration: {{ data.deletedFileExpiration }}</p>
+  <p><mat-icon>departments</mat-icon> departments: {{ data.departments }}</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">OK</button>
+</div>
+

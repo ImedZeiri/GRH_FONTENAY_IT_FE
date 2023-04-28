@@ -1,0 +1,173 @@
+
+
+.second.loading-panel {
+  height: 36vh;
+  background: #2A7689;
+  animation: slide-in-right 7s ;
+  width: auto;
+  transform: translate(-100%);
+}
+
+/* Icons */
+.icon-wrapper {
+  left: 30%;
+  width: 40%;
+  height: 50%;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.second.loading-panel .icon-wrapper {
+  animation: fade 7s linear forwards, slide-in-top 7s ease-out forwards;
+}
+
+
+.first.loading-panel .icon-wrapper:before {
+  top: -5%;
+  left: -5%;
+  animation: late-fade 7s linear forwards, circulate-clockwise 1s linear forwards;
+}
+
+.second.loading-panel .icon-wrapper:before {
+  bottom: -5%;
+  right: -5%;
+  animation: late-fade 7s linear forwards, circulate-counterclockwise 1s linear forwards;
+}
+
+.icon-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.first.loading-panel .cloud {
+  fill: #335367;
+}
+
+.second.loading-panel .cloud {
+  fill: #fff;
+}
+
+.icon-wrapper .icon {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.first.loading-panel .icon {
+  animation: spin-clockwise 2s ease-out forwards;
+}
+
+.second.loading-panel .icon {
+  overflow: hidden;
+  animation: blind-right 1.42857s ease-out forwards;
+  left: 50%;
+  margin-left: -17px;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translate(-100%);
+  }
+  10% {
+    transform: translate(0);
+  }
+  80% {
+    transform: translate(0);
+  }
+  90% {
+    transform: translate(-100%);
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}
+@keyframes slide-in-right {
+  0% {
+    transform: translate(100%);
+  }
+  10% {
+    transform: translate(0);
+  }
+  80% {
+    transform: translate(0);
+  }
+  90% {
+    transform: translate(100%);
+  }
+  100% {
+    transform: translate(100%);
+  }
+}
+@keyframes slide-in-top {
+  0% {
+    top: -20%;
+  }
+  10% {
+    top: -20%;
+  }
+  15% {
+    top: 26%;
+  }
+  75% {
+    top: 26%;
+  }
+  80% {
+    top: -20%;
+  }
+  100% {
+    top: -20%;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes blind-right {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  1% {
+    width: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 35px;
+    opacity: 1;
+  }
+  99% {
+    width: 35px;
+    opacity: 0;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+.content {
+  opacity: 0;
+  animation: fade-in 7s ease-in-out 2s forwards; /* Animation de fade-in après 2 secondes */
+}
+
+@keyframes fade-in {
+  from { opacity: 0; } /* Commencer avec une opacité de 0 */
+  to { opacity: 1; } /* Finir avec une opacité de 1 */
+}
