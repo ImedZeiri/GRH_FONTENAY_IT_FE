@@ -13,13 +13,19 @@ import {PopupsModule} from "../Material/Popups/popups.module";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {ContentLoaderComponent} from "./components/content-loader/content-loader.component";
+import { NotFoundLauncherComponent } from './components/not-found/not-found-launcher/not-found-launcher.component';
+import {FooterComponent} from "./components/footer/footer.component";
+import {LoadingSpinnerComponent} from "./components/loader/loading-spinner.component";
 
 @NgModule({
   declarations: [
     NavigationBarComponent,
     NavigationSidePanelComponent,
     SingleDoubleClickDirective,
-    ContentLoaderComponent
+    ContentLoaderComponent,
+    NotFoundLauncherComponent,
+    FooterComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +43,8 @@ import {ContentLoaderComponent} from "./components/content-loader/content-loader
     NavigationSidePanelComponent,
     SingleDoubleClickDirective,
     ContentLoaderComponent,
+    FooterComponent,
+    LoadingSpinnerComponent,
   ]
 })
 export class SharedModule { }

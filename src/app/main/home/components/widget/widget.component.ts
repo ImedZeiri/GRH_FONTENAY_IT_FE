@@ -6,9 +6,9 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./widget.component.css']
 })
 export class WidgetComponent implements OnInit {
-  @Input() name = 'fas fa-list';
+  @Input() name = '';
   @Input() value = '';
-  @Input() label = 'Statistique';
+  @Input() label = '';
   constructor() { }
 
   ngOnInit(): void {

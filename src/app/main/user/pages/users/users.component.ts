@@ -1,20 +1,19 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {UsersService} from "../../services/users.service";
-import {Users} from "../../services/users";
-import {UserShowComponent} from "../user-show/user-show.component";
-import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { NgDialogAnimationService } from 'ng-dialog-animation';
-import {SidePanelService, SidePanelState} from "../../../../core";
-import {UserAddComponent} from "../user-add/user-add.component";
-import {CustomCardComponent} from "../../components/custom-card/custom-card.component";
-import {AuthService} from "../../../../core/services/login/auth.service";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {MatTableDataSource} from "@angular/material/table";
-import {UserEditComponent} from "../user-edit/user-edit.component";
+
+import { UsersService } from '../../services/users.service';
+import { Users } from '../../services/users';
+import { UserAddComponent } from '../user-add/user-add.component';
+import { CustomCardComponent } from '../../components/custom-card/custom-card.component';
+import { AuthService } from '../../../../core/services/login/auth.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { UserEditComponent } from '../user-edit/user-edit.component';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
@@ -22,23 +21,62 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  @Input() userRights: string;
-
-  displayedColumns: string[] = ['id', 'firstName', 'lastName','cin', 'email', 'roles','phone','accountStatus'];
   dataSource: MatTableDataSource<any>;
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'cin', 'email', 'roles', 'phone', 'accountStatus'];
   users: Users[];
-  selectedRow: any;
   isClickedOutside: boolean = false;
-  isLoading = true;
+  isLoading = false;
   totalItem: number[];
+  rightWidth = '0%';
+  leftWidth = '100%';
+  selectedRow: any = false;
+  toggled: boolean;
+  opacity = 0;
 
-  constructor( private service:UsersService ,
-               private dialog: MatDialog,
-               public ngdialog: NgDialogAnimationService,
-               private elementRef: ElementRef,
-               private _sidePanelService: SidePanelService,
-               private authService:AuthService) {
+  constructor(
+    private service: UsersService,
+    private dialog: MatDialog,
+    public ngdialog: NgDialogAnimationService,
+    private elementRef: ElementRef,
+    private authService: AuthService
+  ) {
     this.dataSource = new MatTableDataSource<any>();
+  }
+
+  toggleWidth() {
+    if (this.toggled) {
+      this.rightWidth = '0%';
+      this.leftWidth = '100%';
+      this.toggled = false;
+      this.opacityOut();
+    } else if (!this.toggled) {
+      this.rightWidth = '25%';
+      this.leftWidth = '75%';
+      this.toggled = true;
+      this.opacityIn();
+    }
+  }
+
+  opacityIn() {
+    let opacity = 0;
+    const intervalId = setInterval(() => {
+      opacity += 0.1;
+      this.opacity = opacity;
+      if (opacity >= 1) {
+        clearInterval(intervalId);
+      }
+    }, 20);
+  }
+
+  opacityOut() {
+    let opacity = 1;
+    const intervalId = setInterval(() => {
+      opacity -= 0.1;
+      this.opacity = opacity;
+      if (opacity <= 0) {
+        clearInterval(intervalId);
+      }
+    }, 20);
   }
 
   ngOnInit(): void {
@@ -48,26 +86,16 @@ export class UsersComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  getUsers(){
-    this.service.getUsers().subscribe((res)=>{
+  getUsers() {
+    this.service.getUsers().subscribe((res) => {
       this.users = res['hydra:member'];
       this.users = this.mappingUsers(res['hydra:member']);
       this.dataSource.data = this.users;
-      this.totalItem = Array.from({length: this.users.length}, (_, index) => index + 1);
-      this.isLoading=false;
-    }, error => {
-      console.log(error);
+      this.totalItem = Array.from({ length: this.users.length });
+      this.isLoading = true;
     });
-    return this.users;
   }
-  mappingUsers(data:any[]){
-    let newUsers = data.map(item=>{
-      return{
-        ...item
-      }
-    })
-    return newUsers
-  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -75,56 +103,26 @@ export class UsersComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  onRowClicked(user: any, $event: MouseEvent){
+
+  onRowSelected(user: Users) {
     this.selectedRow = user;
-    const dialogRef = this.ngdialog.open(UserShowComponent, {
-      width: '300px',
-      height:'80%',
-      autoFocus: true,
-      data: this.selectedRow,
-      position: {
-        right: '0px',
-        top: '13vh',
-      },
-      animation: { to: 'left'},
-      backdropClass:'backdrop-bg-Add-User',
-    });
-      if (!this.elementRef.nativeElement.contains($event.target)) {
-        this.isClickedOutside = false;
-      } else {
-        this.isClickedOutside = true;
-        this._sidePanelService.changeState(SidePanelState.OPEN);
-      }
-  }
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    if (this.selectedRow && this.elementRef.nativeElement.contains(event.target)) {
-      this.isClickedOutside = true;
-      this.selectedRow = null;
-    } else {
-      this.isClickedOutside = false;
-    }
+    this.toggled = false;
+    this.toggleWidth();
   }
   openAddUserDialog() {
-    const dialogRefAdd = this.ngdialog.open(UserAddComponent, {
-      width: '350px',
-      height:'100%',
-      data: this.selectedRow,
-      position: {
-        right: '0px',
-        top: '13vh',
-      },
-      animation: { to: 'left'},
-      panelClass: 'backdrop-bg-Add-User',
-      backdropClass:'backdrop-bg-Add-User',
+    const dialogRef = this.dialog.open(UserAddComponent, {
+      width: '400px',
+      autoFocus: false,
     });
 
-    dialogRefAdd.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      this.getUsers();
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+        this.getUsers();
+      }
     });
   }
-  onUpdateUser(user: any) {
+
+  openEditUser(user: Users) {
     const dialogRefUpdate = this.ngdialog.open(UserEditComponent, {
       width: '350px',
       height:'100%',
@@ -164,6 +162,15 @@ export class UsersComponent implements OnInit {
         });
       }
     });
+  }
+
+  mappingUsers(data: any[]) {
+    let newUsers = data.map(item => {
+      return {
+        ...item
+      }
+    })
+    return newUsers;
   }
 
 }

@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Add Task</h2>
+<mat-dialog-content>
+  <form [formGroup]="taskForm">
+    <mat-form-field>
+      <input matInput formControlName="project_id" placeholder="Project ID" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="task_skill_id" placeholder="Task Skill ID">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="member_id" placeholder="Member ID">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Task Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="startDatePicker" formControlName="start_at" placeholder="Start Date" required>
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="endDatePicker" formControlName="startAt" placeholder="End Date" required>
+      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="complexity" placeholder="Complexity" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="state" placeholder="State" required>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="taskForm.invalid">Add</button>
+</mat-dialog-actions>

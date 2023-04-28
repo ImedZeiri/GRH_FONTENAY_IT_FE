@@ -1,47 +1,133 @@
-.title {
-  color: #c5cdcf;
-  font-family: "Open Sans";
-  font-weight: 200;
-  font-size: 1.3375em;
-  line-height: 1.9375em;
-  margin: 0 auto;
-  text-align: center;
-  background-color: #0c1e35;
-  padding: 10px;
-  color: #c5cdcf;
-  padding: 50px;
-  margin-bottom: 1px;
 
+
+.para {
+  font-size: 12.5px;
+  text-align:left;
+  text-transform: none;
 }
 
-.user__info {
-
-  background-color: rgba(12, 30, 53, 0.19);
-  display: flex;
-  flex-direction: column;
-  border: 0px solid #ccc;
-  height: 11vh;
-}
-
-.user__name {
-  font-size: 18px;
-  margin-bottom: 5px;
+h1 {
+  background-color: #165e92;
+  color: white;
+  margin: 0;
+  padding: 9.5px 20px;
+  font-size: 24px;
   text-transform: uppercase;
+  font-weight: normal;
+}
+h6 {
+  background-color: #165e92;
+  color: white;
+  margin: 0;
+  padding: 9px 20px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+h2 {
+  background-color: #165e92;
+  color: white;
+  margin: 0;
+  padding: 19px 20px;
+  text-transform: uppercase;
+  font-weight: normal;
+  align-content: center;
 }
 
-.user__contact {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+li {
+  background: white;
+  height: 40px;
+  line-height: 40px;
+  color: #0b2f48;
+
 }
 
-.user__email, .user__phone {
-  font-size: 14px;
-  margin-right: 10px;
+li:nth-child(2n) {
+  background: #f7f7f7;
 }
 
-.user__email mat-icon, .user__phone mat-icon {
-  font-size: 16px;
-  margin-right: 5px;
-  color: #516ba0;
+
+#hide {
+  float: right;
+  margin-right:4%
+}
+
+#container {
+  position: relative;
+  width: 205%;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.completedToDo {
+  color:gray;
+  text-decoration: line-through;
+}
+
+
+.footer {
+  color:gray;
+  text-decoration: line-through;
+}
+
+.visible {
+
+}
+
+.delSpan {
+  background: #6a9f85;
+  height: 40px;
+  margin-right: 0;
+  text-align: center;
+  color: white;
+  display: inline-block;
+  width: 0;
+  transition: 0.2s linear ;
+  opacity: 0;
+}
+
+li:hover span {
+  width: 40px;
+  opacity: 1;
+}
+
+
+
+
+
+.hideComplete, .noToDo {
+  display: none !important;
+}
+
+.h1Change {
+  text-align: center;
+  border: 3px solid red;
+
+}
+
+
+.move {
+  background-color: #3a98b9;
+  height: 40px;
+  margin-right: 20px;
+  margin-left: -3.516px;
+  text-align: center;
+  color: white;
+  display: inline-block;
+  width: 0;
+  transition: 0.2s linear ;
+  opacity: 0;
+}
+
+
+.appendToDo {
+  text-decoration: none;
+  list-style-type: none;
 }

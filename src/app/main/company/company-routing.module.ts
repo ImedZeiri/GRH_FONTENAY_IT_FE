@@ -8,8 +8,9 @@ const routes: Routes = [
   {
     path: 'company',
     component: ListComponent,
+    canActivate:[AuthGuard],
     children: [
-      { path: 'add', component: AddComponent ,canActivate:[AuthGuard]},
+      { path: 'add', component: AddComponent },
     ],
   }
 ];

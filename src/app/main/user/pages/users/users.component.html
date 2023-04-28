@@ -1,47 +1,58 @@
 <div class="topPanel" [class.clicked-outside]="isClickedOutside">
-  <div class="topPanel__left" >
+  <div class="container">
+    <app-widget [iconClass]="'supervisor_account'" [value]="totalItem.length.toString()" [label]="'Total users'"></app-widget>
+    <app-widget [iconClass]="'how_to_reg'" [value]="totalItem.length.toString()" [label]="'Active users'"></app-widget>
+  </div>
+  <div class="topPanel__left">
     <button mat-button class="topPanel__button" (click)="openAddUserDialog()">Add New User</button>
   </div>
-
-  <div class="container">
-    <app-widget [background]="'linear-gradient(to right, #141e30, #243b55)'" [iconClass]="'fas fa-users'" [value]="totalItem.length.toString()" [label]="'Total list'">
-    </app-widget>
-    <app-widget [background]="'linear-gradient(to right, #141e30, #243b55)'" [iconClass]="'fas fa-user-friends'" [value]="totalItem.length.toString()" [label]="'Active list'"></app-widget>
-  </div>
-
+    <button mat-icon-button class="topPanel__close-button" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
+      <mat-icon>close</mat-icon>
+    </button>
 </div>
 
-
-
-<div *ngIf="isLoading; else table">
-  <div *ngFor="let item of totalItem">
-    <app-content-loader></app-content-loader>
-  </div>
+<div *ngIf="!isLoading; else table">
+  <app-content-loader></app-content-loader>
 </div>
 
-<mat-form-field class="mat-form-field-filter" [class.clicked-outside]="isClickedOutside">
+<mat-form-field class="mat-form-field-filter">
   <mat-label>Search</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
 </mat-form-field>
 
-<div class="mat-elevation-z8" [class.clicked-outside]="isClickedOutside">
-  <table mat-table [dataSource]="dataSource">
-  <ng-template #table>
-    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-      <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
-      <td mat-cell *matCellDef="let user" (click)="onRowClicked(user,$event)">{{ user[column] }}</td>
-    </ng-container>
-    <!-- Action column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let user">
-        <mat-icon class="delButton" (click)="onDeleteUser(user)">delete</mat-icon>
-        <mat-icon class="UpdateButton" (click)="onUpdateUser(user)">edit</mat-icon>
-      </td>
-    </ng-container>
-  </ng-template>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns.concat('actions')"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions');"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+<div class="container">
+  <div class="leftContainer" [ngStyle]="{ 'width': leftWidth }">
+    <div class="main" >
+      <div class="div1">
+        <div class="card-container">
+          <table mat-table [dataSource]="dataSource">
+            <ng-template #table>
+              <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+                <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
+                <td mat-cell *matCellDef="let user" (click)="onRowSelected(user)" [class.selected]="selectedRow === user">
+                  <ng-container *ngIf="column !== 'accountStatus'">{{ user[column] }}</ng-container>
+                  <mat-icon *ngIf="column === 'accountStatus' && user[column] === 1" class="greenIcon">offline_pin</mat-icon>
+                  <mat-icon *ngIf="column === 'accountStatus' && user[column] !== 1" class="redIcon">not_interested</mat-icon>
+                </td>
+              </ng-container>
+              <!-- Action column -->
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let user">
+                  <mat-icon class="delButton" (click)="onDeleteUser(user)">delete</mat-icon>
+                  <mat-icon class="UpdateButton" (click)="openEditUser(user)">edit</mat-icon>
+                </td>
+              </ng-container>
+            </ng-template>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns.concat('actions')"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions');"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rightContainer" [ngStyle]="{ 'width': rightWidth, 'opacity':opacity }">
+    <app-user-show [data]="selectedRow" *ngIf="selectedRow"></app-user-show>
+  </div>
 </div>

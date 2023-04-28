@@ -45,7 +45,7 @@ export class CompanyService {
   };
 
   getCompany(id: any): Observable<Response[]> {
-    let url = apiUrl + '/companies' + id;
+    let url = 'http://localhost:8000'  + id;
     return this.http.get<Response[]>(url)
       .pipe(
         tap(heroes => console.log('fetched companies')),

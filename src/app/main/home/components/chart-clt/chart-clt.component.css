@@ -1,0 +1,12 @@
+ngx-charts-bar-vertical {
+  display: block;
+  overflow: hidden;
+  width: 460px;
+}
+
+.chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+}

@@ -1,0 +1,192 @@
+.main {
+}
+.div1 {
+  width: 65% ;
+  height: 68vh ;
+  float: left !important;
+  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.div2 {
+  padding-right: -30px;
+  background-color: rgba(232, 106, 146, 0.13);
+  height: 33vh ;
+  overflow: auto;
+  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+  border-radius: 8px;
+}
+.div3 {
+  padding-right: 0px;
+  background-color: rgb(51, 83, 103);
+  height: 36vh !important;
+  overflow: auto;
+  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.right {
+  display: grid;
+  transform: scale(0);
+  animation: scale-in 1s forwards;
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.right-div-header {
+  background: #0c1e35;
+  height: 20px;
+  color: #a3c7d6;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: sticky;
+  top: 0;
+}
+
+.right-div-body {
+}
+
+
+
+.container {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h3 {
+  font-family: Arial;
+
+}
+
+table {
+  position: relative;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
+}
+th{
+  background-color: rgba(51, 102, 153, 0.2);
+  color: #369;
+  font-size: 13px;
+  font-family: "Times New Roman", Times, serif;
+}
+td{
+  font-family: Arial;
+  color: #030f23;
+  font-size: 12px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.hidden-row {
+  display: none;
+}
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.clicked-outside {
+  animation-name: example;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes example {
+  from {
+    width: 100%;
+    opacity: 1;
+  }
+  to {
+    width: 78%;
+  }
+}
+
+.user-widget {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+
+.user-widget h2 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.user-widget p {
+  font-size: 18px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.AddButton {
+  color: #0D0C1E;
+  cursor: pointer;
+
+}
+
+.delButton {
+  color: #f34642;
+  cursor: pointer;
+}
+.UpdateButton {
+  padding-left: 15px;
+  color: #003a98;
+  cursor: pointer;
+}
+.mat-form-field-filter {
+  width: 100%;
+}
+
+
+.topPanel {
+  background-color: #165e92;
+  background-repeat: no-repeat;
+  background-position: top right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  height: 90px;
+}
+
+.topPanel__left {
+  margin-left: 20px;
+}
+
+.topPanel__button {
+  background-color: rgba(13, 12, 30, 0.84);
+  color: #f7f1e5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.topPanel__button:hover {
+  background-color: rgba(13, 12, 30, 0.57);
+}
+
+.topPanel__right {
+  margin-right: 20px;
+}
+

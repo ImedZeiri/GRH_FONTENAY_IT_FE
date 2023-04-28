@@ -1,0 +1,31 @@
+<mat-horizontal-stepper class="container" [selectedIndex]="currentStepIndex">
+  <mat-step *ngFor="let step of steps">
+    <ng-template matStepLabel>{{step}}</ng-template>
+    <div class="stepper-division">
+      <div class="header">Step {{currentStepIndex + 1}}</div>
+      <div class="content">
+        <form [formGroup]="stepFormGroup" *ngIf="step === 'Create Project'">
+          <app-step-project></app-step-project>
+        </form>
+        <form [formGroup]="stepFormGroup" *ngIf="step === 'Create Task'">
+          <mat-form-field>
+            <input matInput formControlName="taskDetails" placeholder="Task Details" required>
+          </mat-form-field>
+        </form>
+        <form [formGroup]="stepFormGroup" *ngIf="step === 'Hire'">
+          <mat-form-field>
+            <input matInput formControlName="hireDetails" placeholder="Hire Details" required>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="footer button-container">
+        <button mat-button color="primary" (click)="previousStep()" *ngIf="currentStepIndex > 0">
+          Previous
+        </button>
+        <button mat-button color="primary" (click)="nextStep()" *ngIf="currentStepIndex < steps.length - 1">
+          Next
+        </button>
+      </div>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

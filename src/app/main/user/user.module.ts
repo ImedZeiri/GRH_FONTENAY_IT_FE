@@ -36,6 +36,7 @@ import {CookieService} from "ngx-cookie-service";
 import {HeadersInterceptor} from "../../core/interceptors/headers.interceptor";
 import {CompanyModule} from "../company/company.module";
 import {SharedModule} from "../../../UI/Shared/shared.module";
+import { ProfilComponent } from './pages/profil/profil.component';
 
 
 
@@ -48,6 +49,7 @@ import {SharedModule} from "../../../UI/Shared/shared.module";
     UserEditComponent,
     WidgetComponent,
     CustomCardComponent,
+    ProfilComponent,
   ],
   imports: [
     CommonModule,

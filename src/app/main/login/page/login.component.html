@@ -1,40 +1,36 @@
-
 <div *ngIf="isLoading">
   <app-loading-spinner></app-loading-spinner>
 </div>
 
-<div *ngIf=" error != '' ">
-  <p>{{error}}</p>
-
+<div class="body">
+  <div class="imgBG">
   </div>
-  <div class="container" #container *ngIf="!isLoading">
-    <div class="form-container sign-in-container">
-      <form [formGroup]="Login" (ngSubmit)="ProceedLogin()">
-        <h1>Sign in</h1>
-        <div class="social-container">
-          <p>Please login</p>
-        </div>
-        <span>or use your account</span>
-        <mat-form-field>
-          <input type="text" matInput formControlName="username" placeholder="Enter the User Name"   autocomplete="on">
-        </mat-form-field>
-        <mat-form-field>
-          <input type="text" matInput formControlName="password" placeholder="Enter your password"   autocomplete="on">
-        </mat-form-field>
-        <a routerLink="/sdf">Forgot your password?</a>
-        <button type="submit" >Sign In</button>
-      </form>
-    </div>
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start managing your company</p>
-        </div>
+<div class="container" *ngIf="!isLoading">
+  <div class="form-container sign-in-container">
+    <form [formGroup]="Login" (ngSubmit)="ProceedLogin()">
+      <h1>Sign in</h1>
+      <div class="social-container">
+        <p>Please login</p>
+      </div>
+      <span>or use your account</span>
+      <mat-form-field>
+        <input type="text" matInput formControlName="username" placeholder="Enter the User Name" autocomplete="on">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" matInput formControlName="password" placeholder="Enter your password" autocomplete="on">
+      </mat-form-field>
+      <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+      <a routerLink="/forgot-password">Forgot your password?</a>
+      <button mat-button type="submit">Sign In</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-right">
+        <h2>Hello, Friend!</h2>
+        <p>Enter your personal details and start managing your company</p>
       </div>
     </div>
   </div>
-
-
-
-
+</div>
+</div>

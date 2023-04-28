@@ -14,10 +14,6 @@ import {EditComponent} from "../edit/edit.component";
 import {Company} from "../../services/company";
 import {UsersService} from "../../../user/services/users.service";
 import {Observable} from "rxjs";
-import {ListAssociateComponent} from "../../components/list-associate/list-associate.component";
-import {stringify} from "@angular/compiler/src/util";
-
-
 
 @Component({
   selector: 'app-list',
@@ -27,19 +23,24 @@ import {stringify} from "@angular/compiler/src/util";
 export class ListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @Output() rowSelected = new EventEmitter<any>();
 
+  rightWidth = '0%';
+  leftWidth = '100%'
   displayedColumns: string[] = ['id', 'name', 'email','website', 'location', 'category','phone'];
   dataSource: MatTableDataSource<any>;
   copmanys: Company[];
-  selectedRow: any;
+  selectedRow: any=false;
+  CityName : any;
   isClickedOutside: boolean = false;
   isLoading = true;
   totalItem: number[];
-  backgroundImageUrl: string;
   userData : Observable<Response[]>;
   copmanyAssociates: any[];
   copmanyAssociatesID: any;
   filteredAssociated: any[];
+  toggled: boolean;
+  opacity= 0;
 
   constructor( private service:CompanyService ,
                private UService : UsersService,
@@ -51,13 +52,50 @@ export class ListComponent implements OnInit {
     this.dataSource = new MatTableDataSource<any>();
   }
 
+  toggleWidth() {
+    if (this.toggled) {
+      this.rightWidth = '0%';
+      this.leftWidth = '100%';
+      this.toggled = false;
+      this.opacityOut();
+    } else if (!this.toggled ) {
+      this.rightWidth = '25%';
+      this.leftWidth = '75%';
+      this.toggled = true;
+      this.opacityIn();
+    }
+  }
+
+  opacityIn() {
+    let opacity = 0;
+    const intervalId = setInterval(() => {
+      opacity += 0.1;
+      this.opacity = opacity;
+      if (opacity >= 1 ) {
+        clearInterval(intervalId);
+      }
+    }, 20);
+  }
+
+  opacityOut() {
+    let opacity = 1;
+    const intervalId = setInterval(() => {
+      opacity -= 0.1;
+      this.opacity = opacity;
+      if (opacity <= 0) {
+        clearInterval(intervalId);
+      }
+    }, 20);
+  }
+
+
   ngOnInit(): void {
     this.getCompanies();
     this.authService.startTokenRefreshTimer();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.backgroundImageUrl = 'https://images3.alphacoders.com/489/48957.jpg';
     this.userData = this.UService.getUser(localStorage.getItem('id'));
+    this.getCompanyAssociates();
   }
   getCompanies(){
     this.service.getCompanys().subscribe((res)=>{
@@ -97,43 +135,19 @@ export class ListComponent implements OnInit {
   }
   onRowClicked(copmany: any, $event: MouseEvent){
     this.selectedRow = copmany;
+    this.rowSelected.emit(this.selectedRow);
+    this.toggled = false;
+    this.toggleWidth();
+    this.CityName = copmany['location']
     try {
-        this.copmanyAssociatesID = parseInt((this.selectedRow.companyAssociates[0]).slice(-1));
-        const totalAssociated = this.getCompanyAssociates();
-        this.filteredAssociated = totalAssociated.filter(assoc => assoc.id === this.copmanyAssociatesID);
-        console.log(this.filteredAssociated);
+      this.copmanyAssociatesID = parseInt((this.selectedRow.companyAssociates[0]).slice(-1));
+      const totalAssociated = this.getCompanyAssociates();
+      this.filteredAssociated = totalAssociated.filter(assoc => assoc.id === this.copmanyAssociatesID);
     } catch (error) {
       console.error(error);
     }
+  }
 
-    const dialogRefAdd = this.ngdialog.open(ShowComponent, {
-      width: '300px',
-      height:'100%',
-      data: this.selectedRow,
-      position: {
-        right: '0px',
-        top: '13vh',
-      },
-      animation: { to: 'left'},
-      panelClass: 'backdrop-bg-Add-User',
-      backdropClass:'backdrop-bg-Add-User',
-    });
-      if (!this.elementRef.nativeElement.contains($event.target)) {
-        this.isClickedOutside = false;
-      } else {
-        this.isClickedOutside = true;
-        this._sidePanelService.changeState(SidePanelState.OPEN);
-      }
-  }
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    if (this.selectedRow && this.elementRef.nativeElement.contains(event.target)) {
-      this.isClickedOutside = true;
-      this.selectedRow = null;
-    } else {
-      this.isClickedOutside = false;
-    }
-  }
   openAddCompanyDialog() {
     const dialogRefAdd = this.ngdialog.open(AddComponent, {
       width: '350px',

@@ -1,0 +1,85 @@
+.topPanel {
+  background-color: #165e92;
+  background-repeat: no-repeat;
+  background-position: top right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.topPanel__left {
+  display: flex;
+  align-items: center;
+}
+
+.topPanel__button {
+  margin-right: 10px;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.close-icon {
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 50px);
+}
+
+.leftContainer {
+  background-color: transparent;
+  overflow-y: auto;
+  transition: width 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.rightContainer {
+  margin-top: -170px;
+  overflow-y: hidden;
+  transition: width 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.main {
+  padding: 20px;
+}
+
+.div1 {
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.mat-card-header {
+  display: flex;
+  align-items: center;
+}
+
+.mat-card-avatar {
+  margin-right: 10px;
+}
+
+.mat-card-title {
+  font-weight: bold;
+}
+
+.UpdateButton {
+  color: blue;
+}

@@ -1,68 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import axios from 'axios';
 
 @Component({
   selector: 'app-geo-card',
   templateUrl: './geo-card.component.html',
-  styleUrls: ['./geo-card.component.css']
+  styleUrls: ['./geo-card.component.css'],
 })
 export class GeoCardComponent implements OnInit {
-  public location: any = {
-    x: 0,
-    y: 0,
-    label: '',
-  };
+  private _cityName: string;
+  @Input()
+  set CityName(cityName: string) {
+    this._cityName = cityName;
+    this.searchCityCoordinates();
+  }
+  get CityName(): string {
+    return this._cityName;
+  }
+  lat: number = 51.5073359;
+  lng: number = -0.12765;
+  map: L.Map;
 
   ngOnInit() {
-    this.initMap();
+    this.map = L.map('map').setView([51.5073359, -0.12765], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.map);
   }
 
-  public initMap(): void {
-    const mapContainer = document.getElementById('contain-map');
-    if (mapContainer) {
-      mapContainer.innerHTML = `<div id='map' style='width: 100%; height: 100%;'></div>`;
-      const map = L.map('map', {
-        center: [this.location.y, this.location.x],
-        zoom: 16,
-      });
-      L.control.scale().addTo(map);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      }).addTo(map);
-      const provider = new OpenStreetMapProvider();
-      let marker = L.marker([this.location.y, this.location.x])
-        .addTo(map)
-        .bindPopup(this.location.label)
-        .openPopup();
-      map.on('geosearch/showlocation', (e) => {
-        if (marker) {
-          map.removeLayer(marker);
-        }
-        marker = new L.Marker([e.location.y, e.location.x])
-          .addTo(map)
-          .bindPopup(e.location.label)
-          .openPopup();
-      });
-
-      const cityName = 'Kairouan';
-      this.getLocationByCityName(cityName).then((location: any) => {
-        this.location = location;
-        map.setView([location.y, location.x], 16);
-        if (marker) {
-          map.removeLayer(marker);
-        }
-        marker = L.marker([location.y, location.x])
-          .addTo(map)
-          .bindPopup(location.label)
-          .openPopup();
-      });
-    }
-
-  }
-  public async getLocationByCityName(cityName: string): Promise<any> {
+  searchCityCoordinates() {
     const provider = new OpenStreetMapProvider();
-    const results = await provider.search({ query: cityName });
-    const { x, y, label } = results[0];
-    return { x, y, label };
+    provider
+      .search({ query: this.CityName })
+      .then((result) => {
+        this.lat = result[0].y;
+        this.lng = result[0].x;
+        console.log(this.lat);
+        console.log(this.lng);
+        const coords: L.LatLngExpression = [this.lat, this.lng];
+        L.marker(coords)
+          .addTo(this.map)
+          .bindPopup('Loading...')
+          .openPopup();
+        this.map.setView(coords, 13);
+        axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${this.lat}&lon=${this.lng}&format=jsonv2`)
+          .then((response) => {
+            const address = response.data.address;
+            let city = address.city;
+            if (!city) {
+              city = address.town || address.village || address.hamlet || address.county || address.state;
+            }
+            L.marker(coords)
+              .addTo(this.map)
+              .bindPopup(city)
+              .openPopup();
+          })
+          .catch((error) => {
+            console.log('Error:', error);
+          });
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
   }
 }

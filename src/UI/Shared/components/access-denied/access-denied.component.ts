@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
+import {AppComponent} from "../../../../app/app.component";
 
 @Component({
   selector: 'app-access-denied',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccessDeniedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<AppComponent>) { }
 
   ngOnInit(): void {
+  }
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 
 }

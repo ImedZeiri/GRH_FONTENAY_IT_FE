@@ -8,7 +8,7 @@
     <p>To see Company association details </p>
   </div>
 </div>
-<div class="card back">
+<div class="card back" *ngIf="associates">
   <div class="yellow"></div>
   <div class="top dots"></div>
   <div class="personal-info" *ngFor="let associate of associates">

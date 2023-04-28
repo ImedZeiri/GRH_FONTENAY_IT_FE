@@ -3,6 +3,7 @@ import {StatisticsService} from "../../services/statistics.service";
 import {UsersService} from "../../../user/services/users.service";
 import {Users} from "../../../user/services/users";
 import {MatTableDataSource} from "@angular/material/table";
+import {AuthService} from "../../../../core/services/login/auth.service";
 
 @Component({
   selector: 'app-home',
@@ -16,16 +17,13 @@ export class HomeComponent implements OnInit {
   users: Users[];
   displayedColumns: string[] = ['id', 'firstName', 'lastName','cin', 'email', 'roles','phone','accountStatus'];
   dataSource: MatTableDataSource<any>;
-  selectedRow: any;
-  isClickedOutside: boolean = false;
   isLoading = true;
-  totalItemUsers: number[];
-
 
   constructor(private statisticsService: StatisticsService,
-              private service:UsersService) { }
-
+              private service:UsersService,
+              private authService:AuthService){}
   ngOnInit() {
+    this.authService.startTokenRefreshTimer();
     this.usersCount = this.statisticsService.getUsersCount();
     this.companyTasksCount = this.statisticsService.getCompanyTasksCount();
     this.projectsCount = this.statisticsService.getProjectsCount();

@@ -41,7 +41,7 @@ export class UsersService {
   };
 
   getUser(id: any): Observable<Response[]> {
-    let url = apiUrl + '/users/' + id;
+    let url = 'http://localhost:8000'  + id;
     return this.http.get<Response[]>(url)
       .pipe(
         tap(heroes => console.log('fetched Users')),

@@ -1,0 +1,90 @@
+<div class="ui">
+  <nav class="navbar app">Streamline workflow, prioritize tasks, collaborate effectively !!
+  </nav>
+  <nav class="navbar board">
+    <mat-form-field>
+      <input matInput type="text" [(ngModel)]="searchTaskname" placeholder="Search by task name" (input)="searchTasks()">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select Project</mat-label>
+      <mat-select [(ngModel)]="selectedProject" (selectionChange)="filterTasks()">
+        <mat-option value="all">All</mat-option>
+        <mat-option *ngFor="let project of projectList" [value]="project.key">
+          {{ project.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </nav>
+  <div class="lists">
+    <div class="list" (drop)="onDrop($event, 'todo')" (dragover)="allowDrop($event)">
+      <header>To Do</header>
+      <ul>
+        <li *ngFor="let task of todoList" [draggable]="true" (dragstart)="onDragStart($event, task.name)"
+            (click)="selectItem(task.name)">{{ task.name }}
+          <mat-icon class="visibility-icon" (click)="openItemContentDialog(task)">visibility</mat-icon>
+        </li>
+      </ul>
+      <footer>
+        <button mat-button class="add-card" (click)="openAddCardDialog('{{ newListName }}')">Add a card...</button>
+      </footer>
+    </div>
+
+    <div class="list" (drop)="onDrop($event, 'inProgress')" (dragover)="allowDrop($event)">
+      <header>In Progress</header>
+      <ul>
+        <li *ngFor="let task of inProgressList" [draggable]="true" (dragstart)="onDragStart($event, task.name)"
+            (click)="selectItem(task.name)">{{ task.name }}
+          <mat-icon class="visibility-icon" (click)="openItemContentDialog(task)">visibility</mat-icon>
+        </li>
+      </ul>
+      <footer>
+        <button mat-button class="add-card" (click)="openAddCardDialog('{{ newListName }}')">Add a card...</button>
+      </footer>
+    </div>
+
+    <div class="list" (drop)="onDrop($event, 'pending')" (dragover)="allowDrop($event)">
+      <header>Pending</header>
+      <ul>
+        <li *ngFor="let task of pendingList" [draggable]="true" (dragstart)="onDragStart($event, task.name)"
+            (click)="selectItem(task.name)">{{ task.name }}
+          <mat-icon class="visibility-icon" (click)="openItemContentDialog(task)">visibility</mat-icon>
+        </li>
+      </ul>
+      <footer>
+        <button mat-button class="add-card" (click)="openAddCardDialog('{{ newListName }}')">Add a card...</button>
+      </footer>
+    </div>
+
+    <div class="list" (drop)="onDrop($event, 'blocked')" (dragover)="allowDrop($event)">
+      <header>Blocked</header>
+      <ul>
+        <li *ngFor="let task of blockedList" [draggable]="true" (dragstart)="onDragStart($event, task.name)"
+            (click)="selectItem(task.name)">{{ task.name }}
+          <mat-icon class="visibility-icon" (click)="openItemContentDialog(task)">visibility</mat-icon>
+        </li>
+      </ul>
+      <footer>
+        <button mat-button class="add-card" (click)="openAddCardDialog('{{ newListName }}')">Add a card...</button>
+      </footer>
+    </div>
+
+    <div class="list" (drop)="onDrop($event, 'done')" (dragover)="allowDrop($event)">
+      <header>Done</header>
+      <ul>
+        <li *ngFor="let task of doneList" [draggable]="true" (dragstart)="onDragStart($event, task.name)"
+            (click)="selectItem(task.name)">{{ task.name }}
+          <mat-icon class="visibility-icon" (click)="openItemContentDialog(task)">visibility</mat-icon>
+        </li>
+      </ul>
+      <footer>
+        <button mat-button class="add-card" (click)="openAddCardDialog('{{ newListName }}')">Add a card...</button>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="selectedItem" class="item-content">
+  <h3>Selected Item Content:</h3>
+  <p>{{ selectedItem }}</p>
+</div>

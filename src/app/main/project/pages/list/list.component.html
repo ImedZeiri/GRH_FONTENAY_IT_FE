@@ -1,0 +1,42 @@
+<div class="topPanel">
+  <div class="container">
+  </div>
+  <div class="topPanel__left" >
+    <button mat-button class="topPanel__button" (click)="OpenDialog()">
+      <mat-icon>add</mat-icon >New Project</button>
+    <button mat-icon-button class="topPanel__close-button" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="leftContainer" [ngStyle]="{ 'width': leftWidth }">
+    <div class="main" >
+      <div class="div1">
+        <div class="card-container">
+          <mat-card *ngFor="let project of projects" (click)="onRowSelected(project)" [class.selected]="selectedRow === project">
+            <mat-card-header>
+              <div mat-card-avatar>
+                <mat-icon>folder</mat-icon>
+              </div>
+              <mat-card-title>{{ project.name }}</mat-card-title>
+              <mat-card-subtitle>{{ project.field }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Date de début: {{ project.startAt | date }}</p>
+              <p>Date de fin: {{ project.endAt | date }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="openProject(project)">More</button>
+              <button mat-button class="UpdateButton" (click)="onRowClicked(project,$event)">Edit</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rightContainer" [ngStyle]="{ 'width': rightWidth, 'opacity':opacity }">
+    <app-edit [data]="selectedRow" *ngIf="selectedRow"></app-edit>
+  </div>
+</div>

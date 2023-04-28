@@ -1,0 +1,161 @@
+/* Some Sass variables */
+body {
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+.ui {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 40px 50px 1fr;
+  background-color: transparent;
+  color: #eee;
+}
+
+.navbar {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.navbar.app {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  border-radius: 5px;
+  background: #0067a3;
+  justify-content: center;
+}
+.navbar.board{
+  display: block;
+  height: 70px;
+  padding-top: 20px;
+}
+
+.lists {
+  display: flex;
+  overflow-x: auto;
+  padding-top: 50px;
+}
+.lists > * {
+  flex: 0 0 auto;
+  margin-left: 10px;
+}
+.lists::after {
+  content: "";
+  flex: 0 0 10px;
+}
+
+.list {
+  width: 300px;
+  height: calc(100% - 10px - 17px);
+}
+.list > * {
+  background-color: #0079bf;
+  color: #0c1e35;
+  padding: 0 10px;
+}
+.list header {
+  line-height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.list footer {
+  line-height: 36px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #f7fafc;
+}
+.list ul {
+  list-style: none;
+  margin: 0;
+  max-height: calc(100% - 36px - 36px);
+  overflow-y: auto;
+}
+.list ul li {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+
+.list ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.list ul li:hover {
+  background-color: #f5f5f5; /* Set the background color when hovering over the item */
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+.list ul li img {
+  display: block;
+  width: calc(100% + 2 * 10px);
+  margin: -10px 0 10px -10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.add-card {
+  background-color: #1976d2;
+  color: #ffffff;
+  padding: -9px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.add-card:hover {
+  background-color: #ffffff;
+  color: #2196f3;
+}
+
+.add-card:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(255, 255, 255);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.visibility-icon {
+  color: #9da0a4; /* Couleur de l'icône */
+  font-size: 24px; /* Taille de police de l'icône */
+  position: relative; /* Position absolue */
+  top: 0; /* Aligner l'icône en haut */
+  padding-right: -100px; /* Ajouter un espacement à droite pour l'icône */
+}
+
+.visibility-icon:hover {
+  color: #007bff; /* Couleur lors du survol de l'icône */
+  cursor: pointer; /* Curseur en forme de pointeur au survol */
+}
+
+

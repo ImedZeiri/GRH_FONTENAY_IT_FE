@@ -1,22 +1,17 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Users} from "../../services/users";
 
 @Component({
-  selector: 'app-show',
+  selector: 'app-user-show',
   templateUrl: './user-show.component.html',
   styleUrls: ['./user-show.component.css']
 })
 export class UserShowComponent implements OnInit {
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<UserShowComponent>,
+  @Input() data: any[];
+  constructor(
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }

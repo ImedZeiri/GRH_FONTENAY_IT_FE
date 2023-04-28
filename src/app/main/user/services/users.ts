@@ -11,4 +11,7 @@ export class Users {
   phone: string;
 
   first_name: string;
+  tokenExpiresAt: any;
+  userRights: any;
+  gender: any;
 }

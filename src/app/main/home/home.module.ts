@@ -16,41 +16,53 @@ import {PopupsModule} from "../../../UI/Material/Popups/popups.module";
 import {FormsModule} from "../../../UI/Material/Forms/forms.module";
 import {CoreModule} from "../../core/core.module";
 import {SharedModule} from "../../../UI/Shared/shared.module";
-import {ContentLoaderComponent} from "../../../UI/Shared/components/content-loader/content-loader.component";
 import { WidgetComponent } from './components/widget/widget.component';
 import { TopUsersComponent } from './components/top-users/top-users.component';
-
+import { ProfileComponent } from './components/profile/profile.component';
+import { TabUsersComponent } from './components/tab-users/tab-users.component';
+import { LayoutCPComponent } from './components/layout-cp/layout-cp.component';
+import { ChartCLTComponent } from './components/chart-clt/chart-clt.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
     declarations: [
 
         WidgetComponent,
          TopUsersComponent,
+         ProfileComponent,
+         TabUsersComponent,
+         LayoutCPComponent,
+         ChartCLTComponent,
     ],
-  exports: [
-    WidgetComponent,
-    TopUsersComponent
-  ],
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        NavigationModule,
-        MatSelectModule,
-        ButtonsModule,
-        LayoutModule,
-        DatatableModule,
-        PopupsModule,
-        FormsModule,
-        AppRoutingModule,
-        BrowserModule,
-        FormsModule,
-        CoreModule,
-        SharedModule,
-    ]
+    exports: [
+        WidgetComponent,
+        TopUsersComponent,
+        ProfileComponent,
+        TabUsersComponent,
+        LayoutCPComponent,
+        ChartCLTComponent
+    ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NavigationModule,
+    MatSelectModule,
+    ButtonsModule,
+    LayoutModule,
+    DatatableModule,
+    PopupsModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    CoreModule,
+    SharedModule,
+    NgxChartsModule,
+  ]
 })
 export class HomeModule { }

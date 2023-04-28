@@ -46,4 +46,24 @@ export class TopUsersComponent implements OnInit {
     })
     return newUsers
   }
+
+  sendEmail(email: string) {
+    const user_email = this.selectedRow.email;
+    const subject = 'Hello from my Angular app!';
+    const body = 'This is a test email sent from my Angular app.';
+
+    const mailtoLink = `mailto:${user_email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+  }
+  isUserRole(roles: any[]): boolean {
+    const res = roles && roles.length && roles[0] === 'ROLE_USER';
+    return <boolean>res;
+  }
+
+  isAdminRole(roles: any[]): boolean {
+    const res = roles && roles.length && roles[0] === 'ROLE_ADMIN';
+    return <boolean>res;
+  }
+
 }

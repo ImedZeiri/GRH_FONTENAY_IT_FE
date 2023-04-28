@@ -6,18 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './main/login/page/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {NavigationModule} from "../UI/Material/Navigation/navigation.module";
 import {MatSelectModule} from "@angular/material/select";
-import {ButtonsModule} from "../UI/Material/Buttons/buttons.module";
-import {LayoutModule} from "../UI/Material/Layout/layout.module";
-import {DatatableModule} from "../UI/Material/DataTables/datatable.module";
-import {PopupsModule} from "../UI/Material/Popups/popups.module";
 import {CookieService} from 'ngx-cookie-service';
-import {LoadingSpinnerComponent} from "../UI/Shared/components/loader/loading-spinner.component";
-import {FormsModule} from "../UI/Material/Forms/forms.module";
-import {FooterComponent} from '../UI/Shared/components/footer/footer.component'
-import {AccessDeniedComponent} from "../UI/Shared/components/access-denied/access-denied.component";
-import {NotFoundComponent} from "../UI/Shared/components/not-found/not-found.component";
 
 
 import { CoreModule } from './core/core.module';
@@ -32,46 +22,43 @@ import {HomeComponent} from "./main/home/pages/home/home.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CompanyModule} from "./main/company/company.module";
 import {HomeModule} from "./main/home/home.module";
+import {DepartmentModule} from "./main/department/department.module";
+import {ProjectModule} from "./main/project/project.module";
+import {TaskModule} from "./main/task/task.module";
+import {FormsModule} from "../UI/Material/Forms/forms.module";
+import {ButtonsModule} from "../UI/Material/Buttons/buttons.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LoadingSpinnerComponent,
-    FooterComponent,
-    AccessDeniedComponent,
-    NotFoundComponent,
     AppComponent,
     HomeComponent,
-    FooterComponent,
 
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        NavigationModule,
-        MatSelectModule,
-        ButtonsModule,
-        LayoutModule,
-        DatatableModule,
-        PopupsModule,
-        FormsModule,
-        AppRoutingModule,
-        BrowserModule,
-        FormsModule,
-        CoreModule,
-        SharedModule,
-        CommonModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        UserModule,
-        CompanyModule,
-        HomeModule,
-
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    MatSelectModule,
+    AppRoutingModule,
+    BrowserModule,
+    CoreModule,
+    SharedModule,
+    CommonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    UserModule,
+    CompanyModule,
+    DepartmentModule,
+    HomeModule,
+    ProjectModule,
+    TaskModule,
+    FormsModule,
+    ButtonsModule
+  ],
   providers: [
     CookieService,
     {

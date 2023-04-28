@@ -1,27 +1,59 @@
 <div class="container">
-  <div class="item header">
+  <div class="item cardNumber">
     <app-widget [name]="'Companies'"
                 [value]="companyTasksCount.toString()"
-                [label]="'list'">
+                [label]="'business'">
     </app-widget>
     <app-widget [name]="'Users'"
                 [value]="usersCount.toString()"
-                [label]="'Total list'">
+                [label]="'person_outline'">
     </app-widget>
     <app-widget [name]="'Projects'"
                 [value]="projectsCount.toString()"
-                [label]="'Total list'">
+                [label]="'business_center'">
+    </app-widget>
+    <app-widget [name]="'Taks'"
+                [value]="projectsCount.toString()"
+                [label]="'done'">
     </app-widget>
   </div>
   <div class="item sidebar">
+    <app-profile></app-profile>
+  </div>
+  <div class="item content-1">
+    <app-tab-users></app-tab-users>
+  </div>
+  <div class="item content-2">
     <app-top-users></app-top-users>
   </div>
-  <div class="item content-1">Content-1</div>
-  <div class="item content-2">Content-2</div>
-  <div class="item content-3">Content-3</div>
-  <div class="item footer">footer</div>
+  <div class="item content-3">
+    <app-chart-clt></app-chart-clt>
+  </div>
 </div>
 
 
+<div id="wrapper">
+  <div class="divCP">
+    <app-layout-cp></app-layout-cp>
+  </div>
+
+  <header>
+    <div id="logo">logo</div>
+    <nav>
+      <div>h1</div>
+      <div>h2</div>
+      <div>h3</div>
+      <div>h4</div>
+    </nav>
+  </header>
+  <main>kzdyjhvc cm</main>
+  <section>
+    <div>s2</div>
+    <div>s3</div>
+    <div>s4</div>
+    <div>s5</div>
+  </section>
+  <footer>footer</footer>
+</div>
 
 

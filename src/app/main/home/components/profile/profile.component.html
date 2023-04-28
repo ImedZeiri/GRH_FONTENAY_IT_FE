@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="header-container">
+    <img src="https://s17.postimg.cc/ypm5ye95r/image.jpg" alt="" class="header-image" />
+    <div class="header">
+      <h1 class="main-heading">{{currentUser['lastName']+' '+currentUser['firstName'] |uppercase }}</h1>
+      <span class="tag">{{currentUser['roles']}}</span>
+      <div class="stats">
+        <span class="stat-module">
+          Movies <span class="stat-number">56</span>
+        </span>
+        <span class="stat-module">
+          Plays <span class="stat-number">29</span>
+        </span>
+        <span class="stat-module">
+          Musicals <span class="stat-number">11</span>
+        </span>
+      </div>
+    </div> <!-- END header -->
+  </div>
+
+  <div class="overlay-header"></div>
+
+  <div class="body">
+    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="Hugh Jackman" class="body-image" />
+
+    <span class="body-stats"><span></span></span>
+    <span class="body-stats"><span></span></span>
+    <div class="u-clearfix"></div>
+    <div class="body-info">
+      <p>
+        Welcome, {{currentUser['lastName']+' '+currentUser['firstName']}}! We're delighted to have you connected to our application. With our feature-rich platform, you'll have access to a wide range of functionalities that will streamline your experience and enhance your productivity.
+      </p>
+      <p>
+        Our application offers comprehensive user management, allowing you to create and manage user accounts effortlessly. You can assign roles and permissions to different users, ensuring secure access and tailored privileges for each team member.
+      </p>
+    </div>
+  </div>
+
+</div>

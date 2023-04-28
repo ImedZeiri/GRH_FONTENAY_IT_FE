@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-add',
@@ -15,6 +16,7 @@ export class UserAddComponent implements OnInit {
 
   AddUserForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
+              private _snackBar: MatSnackBar,
               private service:UsersService) {
     this.AddUserForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -53,6 +55,10 @@ export class UserAddComponent implements OnInit {
       response => console.log(response),
       error => console.error(error)
     );
+    this.openSnackBar('user added','')
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 

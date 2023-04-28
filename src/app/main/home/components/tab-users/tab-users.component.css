@@ -1,0 +1,64 @@
+.container {
+  display: block;
+  justify-content: space-between;
+  background: white;
+  width: 108%;
+  border-radius: 5px;
+}
+
+.text-left {
+  margin-left: 30px;
+  text-align: left;
+  color: #082234;
+  font-family: "Open Sans", Arial;
+  margin: 5px;
+}
+
+.text-right {
+  color: gray;
+  margin-left: 800px;
+  cursor: pointer;
+}
+.text-right:hover {
+  color: black;
+}
+
+table {
+  margin-left: 10px;
+  width: 98%;
+  border-radius: 5px !important; /* Add border-radius of 5px to the table */
+}
+
+th.mat-header-cell {
+  background-color: #165e92;
+  color: white;
+}
+
+/* Couleur rouge et verte pour les lignes */
+tr.mat-row:nth-child(odd) {
+  background-color: #eaf0f3;
+  margin: 0.5em 1em;
+  height: 33px;
+  border: 5px;
+}
+
+tr.mat-row:nth-child(even) {
+  background-color: white;
+  height: 35px;
+}
+
+/* Bordure et espacement entre les lignes */
+tr.mat-row {
+  margin-bottom: 5px;
+}
+
+/* Hover effect */
+tr.mat-row:hover {
+  background-color: rgba(211, 211, 211, 0.35);
+  cursor: pointer;
+}
+
+/* Couleur du texte dans les lignes du tableau */
+tr.mat-row td {
+  color: #0c334f;
+}
