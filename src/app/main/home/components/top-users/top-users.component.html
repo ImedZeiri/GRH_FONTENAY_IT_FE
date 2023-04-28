@@ -1,0 +1,10 @@
+<div class="title">Best 5 Emplyers</div>
+
+<div class="user__info" *ngFor="let user of users | slice:0:5">
+  <h2 class="user__name">{{ user.first_name }}</h2>
+  <div class="user__contact">
+    <span class="user__email"><mat-icon>email</mat-icon> {{ user.email }}</span>
+    <span class="user__phone"><mat-icon>phone</mat-icon>  {{ user.phone }}</span>
+  </div>
+  <mat-divider></mat-divider>
+</div>

@@ -1,0 +1,47 @@
+.title {
+  color: #c5cdcf;
+  font-family: "Open Sans";
+  font-weight: 200;
+  font-size: 1.3375em;
+  line-height: 1.9375em;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #0c1e35;
+  padding: 10px;
+  color: #c5cdcf;
+  padding: 50px;
+  margin-bottom: 1px;
+
+}
+
+.user__info {
+
+  background-color: rgba(12, 30, 53, 0.19);
+  display: flex;
+  flex-direction: column;
+  border: 0px solid #ccc;
+  height: 11vh;
+}
+
+.user__name {
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.user__contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user__email, .user__phone {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.user__email mat-icon, .user__phone mat-icon {
+  font-size: 16px;
+  margin-right: 5px;
+  color: #516ba0;
+}
