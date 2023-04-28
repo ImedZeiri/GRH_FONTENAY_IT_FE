@@ -1,22 +1,112 @@
-.main {
+
+.container {
+  display: flex;
+  width: 100%;
 }
+
+.leftContainer {
+  height: 100%;
+  transition: width 0.5s ease-in-out;
+}
+
+.leftContainer:before {
+  font-family: monospace;
+  content: attr(data-state);
+  margin-bottom: 0.5em;
+}
+.rightContainer {
+  flex: 1 1 0;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: width 0.5s ease-in;
+  animation-name: slide-left;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes slide-left {
+  from {
+    transform: translateX(10%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.rightContainer:before {
+  font-family: monospace;
+  content: attr(data-state);
+  margin-bottom: 0.5em;
+}
+.close-button {
+  width: 40px;
+  background: #0c1e35;
+  border: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  position: relative;
+  display: block;
+  z-index: 200;
+  text-indent: -9999px;
+}
+.close-button:before,
+.close-button:after {
+  content: '';
+  width: 55%;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  top: 48%;
+  left: 22%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.close-button:after {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.close-button:hover:before,
+.close-button:hover:after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 .div1 {
   width: 65% ;
   height: 68vh ;
   float: left !important;
-  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;  padding: 20px;
   margin: 10px 0;
   border-radius: 8px;
 }
 
 .div2 {
+  position: relative;
   padding-right: -30px;
   background-color: rgba(232, 106, 146, 0.13);
   height: 33vh ;
   overflow: auto;
-  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
-  margin: 20px 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;  margin: 20px 0;
   border-radius: 8px;
 }
 .div3 {
@@ -24,8 +114,7 @@
   background-color: rgb(51, 83, 103);
   height: 36vh !important;
   overflow: auto;
-  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;  border-radius: 8px;
 }
 
 .right {
@@ -57,28 +146,19 @@
 }
 
 
-
-.container {
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
 h3 {
   font-family: Arial;
 
 }
-
+.mat-table{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
 table {
   position: relative;
   width: 100%;
   align-items: center;
   justify-content: flex-end;
-  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
-}
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;}
 th{
   background-color: rgba(51, 102, 153, 0.2);
   color: #369;
@@ -118,25 +198,6 @@ tr:hover {
   }
 }
 
-.user-widget {
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  width: 150px;
-}
-
-.user-widget h2 {
-  font-size: 36px;
-  margin: 0;
-}
-
-.user-widget p {
-  font-size: 18px;
-  margin: 0;
-  text-transform: uppercase;
-}
 
 .AddButton {
   color: #0D0C1E;
@@ -159,24 +220,24 @@ tr:hover {
 
 
 .topPanel {
-  background-color: #2A7689;
+  background-color: #165e92;
   background-repeat: no-repeat;
   background-position: top right;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  height: 90px;
+  height: 60px;
 }
 
 .topPanel__left {
-  margin-left: 20px;
+  display: flex;
 }
 
 .topPanel__button {
+  margin-right: 10px;
   background-color: rgba(13, 12, 30, 0.84);
   color: #f7f1e5;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -189,4 +250,3 @@ tr:hover {
 .topPanel__right {
   margin-right: 20px;
 }
-

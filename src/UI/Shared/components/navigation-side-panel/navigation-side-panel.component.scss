@@ -7,14 +7,16 @@ $sidebar-footer-height: 230px;
 
 
 .active {
-  background-color: #b20a45;
-  background: radial-gradient(ellipse at top, #345 0%, #123 100%);
+  background-color: #dee2ec;
 }
 .active1{
   color: white !important;
+  background-color: #dee2ec;
 }
 .active2 {
-  color: white !important;
+  color: $bg-color !important;
+  background-color: #dee2ec;
+
 }
 .text-expansion{
   display: block;
@@ -78,7 +80,6 @@ $sidebar-footer-height: 230px;
     position: relative;
     background-color: $bg-color;
     z-index: 2;
-
     .sidebar-header {
       height: $sidebar-header-height;
       min-height: $sidebar-header-height;

@@ -1,26 +1,68 @@
-<h1 mat-dialog-title
-    cdkDrag
-    cdkDragRootElement=".cdk-overlay-pane"
-    cdkDragBoundary=".cdk-overlay-container"
-    cdkDragHandle>
-  {{data.name}} details :
-</h1>
-<div mat-dialog-content>
-  <p><mat-icon>location_city</mat-icon> name: {{ data.name }}</p>
-  <p><mat-icon>email</mat-icon> Email: {{ data.email }}</p>
-  <p><mat-icon>my_location</mat-icon> location: {{ data.location }}</p>
-  <p><mat-icon>category</mat-icon> category: {{ data.category }}</p>
-  <p><mat-icon>website</mat-icon> website: {{ data.website }}</p>
-  <p><mat-icon>capacity</mat-icon> capacity: {{ data.capacity }}</p>
-  <p><mat-icon>tax_number</mat-icon> tax_number: {{ data.tax_number }}</p>
-  <p><mat-icon>business_center</mat-icon> identity_number: {{ data.identity_number }}</p>
-  <p><mat-icon>taxNumber</mat-icon> taxNumber: {{ data.taxNumber }}</p>
-  <p><mat-icon>users</mat-icon> companyAssociates: {{ data.companyAssociates }}</p>
-  <p><mat-icon>timer_off</mat-icon> deletedFileExpiration: {{ data.deletedFileExpiration }}</p>
-  <p><mat-icon>departments</mat-icon> departments: {{ data.departments }}</p>
-</div>
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>account_circle</mat-icon></div>
+    <mat-card-title (click)="makeEditable('name')">{{ data['name'] }}</mat-card-title>
+    <mat-card-subtitle>{{ data['category'] }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><mat-icon>email</mat-icon> Email: <span (click)="makeEditable('email')" [contentEditable]="emailEditable">{{ data['email'] }}</span></p>
+    <p><mat-icon>location_city</mat-icon> Location: <span (click)="makeEditable('location')" [contentEditable]="locationEditable">{{ data['location'] }}</span></p>
+    <p><mat-icon>website</mat-icon> Website: <span (click)="makeEditable('website')" [contentEditable]="websiteEditable">{{ data['website'] }}</span></p>
+    <p><mat-icon>people_alt</mat-icon> Capacity: <span (click)="makeEditable('capacity')" [contentEditable]="capacityEditable">{{ data['capacity'] }}</span></p>
+    <p><mat-icon>receipt</mat-icon> Tax Number: <span (click)="makeEditable('tax_number')" [contentEditable]="taxNumberEditable">{{ data['tax_number'] }}</span></p>
+    <p><mat-icon>business_center</mat-icon> Identity Number: <span (click)="makeEditable('identity_number')" [contentEditable]="identityNumberEditable">{{ data['identity_number'] }}</span></p>
+    <p>
+      <mat-icon>timer_off</mat-icon>
+      Expiration:
+      <span (click)="makeEditable('deletedFileExpiration')">
+      <mat-form-field appearance="outline" class="expiration-date">
+        <input matInput [matDatepicker]="expirationDatePicker" [contentEditable]="deletedFileExpirationEditable" value="{{ data['deletedFileExpiration'] }}" readonly>
+        <mat-datepicker-toggle matSuffix [for]="expirationDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #expirationDatePicker></mat-datepicker>
+      </mat-form-field>
+      </span>
+    </p>
+    <p><mat-icon>business_center</mat-icon> Departments: <span (click)="makeEditable('departments')" [contentEditable]="departmentsEditable">{{ data['departments'] }}</span></p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Save Changes</button>
+  </mat-card-actions>
+</mat-card>
 
-<div mat-dialog-actions>
-  <button mat-raised-button (click)="onNoClick()">OK</button>
-</div>
 
+
+<!--
+<h1 class="title">user details</h1>
+<div class="user-profile">
+
+  <div id="fullname">{{ data['@type'] }}</div>
+  <div id="username">
+    goldendog885
+  </div>
+  <div class="description">
+    <mat-card-content>
+      <p><mat-icon>email</mat-icon> Email: <span (click)="makeEditable('email')" [contentEditable]="emailEditable">{{ data['email'] }}</span></p>
+      <p><mat-icon>location_city</mat-icon> Location: <span (click)="makeEditable('location')" [contentEditable]="locationEditable">{{ data['location'] }}</span></p>
+      <p><mat-icon>website</mat-icon> Website: <span (click)="makeEditable('website')" [contentEditable]="websiteEditable">{{ data['website'] }}</span></p>
+      <p><mat-icon>people_alt</mat-icon> Capacity: <span (click)="makeEditable('capacity')" [contentEditable]="capacityEditable">{{ data['capacity'] }}</span></p>
+      <p><mat-icon>receipt</mat-icon> Tax Number: <span (click)="makeEditable('tax_number')" [contentEditable]="taxNumberEditable">{{ data['tax_number'] }}</span></p>
+      <p><mat-icon>business_center</mat-icon> Identity Number: <span (click)="makeEditable('identity_number')" [contentEditable]="identityNumberEditable">{{ data['identity_number'] }}</span></p>
+      <p>
+        <mat-icon>timer_off</mat-icon>
+        Expiration:
+        <span (click)="makeEditable('deletedFileExpiration')">
+      <mat-form-field appearance="outline" class="expiration-date">
+        <input matInput [matDatepicker]="expirationDatePicker" [contentEditable]="deletedFileExpirationEditable" value="{{ data['deletedFileExpiration'] }}" readonly>
+        <mat-datepicker-toggle matSuffix [for]="expirationDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #expirationDatePicker></mat-datepicker>
+      </mat-form-field>
+      </span>
+      </p>
+      <p><mat-icon>business_center</mat-icon> Departments: <span (click)="makeEditable('departments')" [contentEditable]="departmentsEditable">{{ data['departments'] }}</span></p>
+    </mat-card-content>
+  </div>
+  <div class="footer">
+    <button id="btn">Next User!</button>
+  </div>
+</div>
+-->

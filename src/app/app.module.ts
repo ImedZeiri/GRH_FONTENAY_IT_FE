@@ -32,6 +32,8 @@ import {HomeComponent} from "./main/home/pages/home/home.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CompanyModule} from "./main/company/company.module";
 import {HomeModule} from "./main/home/home.module";
+import {DepartmentModule} from "./main/department/department.module";
+import * as Highcharts from "highcharts";
 
 @NgModule({
   declarations: [
@@ -69,8 +71,8 @@ import {HomeModule} from "./main/home/home.module";
         ReactiveFormsModule,
         UserModule,
         CompanyModule,
+        DepartmentModule,
         HomeModule,
-
     ],
   providers: [
     CookieService,

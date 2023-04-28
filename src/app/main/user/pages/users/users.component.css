@@ -92,14 +92,14 @@ tr:hover {
 
 
 .topPanel {
-  background-color: #2A7689;
+  background-color: #165e92;
   background-repeat: no-repeat;
   background-position: top right;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  height: 90px;
+  height: 60px;
 }
 
 .topPanel__left {
@@ -121,4 +121,13 @@ tr:hover {
 
 .topPanel__right {
   margin-right: 20px;
+}
+
+.greenIcon {
+  color: #6a9f85;
+  padding-left: 25px;
+}
+.redIcon {
+  color: #f34642;
+  padding-left: 25px;
 }

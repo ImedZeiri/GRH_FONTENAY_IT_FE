@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="block1">
+    <mat-card class="card">
+      <mat-card-header>
+        <h2>List of member :</h2>
+      </mat-card-header>
+      <mat-card-content *ngFor="let user of users" class="user-card">
+        <mat-divider class="divider"></mat-divider><br>
+        <mat-icon class="email-icon">personal</mat-icon> {{ user['firstName'] }}<br>
+        <mat-icon class="email-icon">email</mat-icon> <a href="mailto:{{ user['email'] }}">{{ user['email'] }}</a><br>
+        <mat-icon class="cin-icon">phone</mat-icon> <a href="tel:{{ user['phone'] }}">{{ user['phone'] }}</a><br>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+  <div class="block2">
+    <mat-card class="card">
+      <mat-card-header>
+        <h2> Company :</h2> <br>
+      </mat-card-header>
+      <mat-card-content>
+        <p><mat-icon>location_city</mat-icon> name: {{ company.name }}</p>
+        <p><mat-icon>email</mat-icon> Email: <a href="mailto:{{ company.email }}">{{ company.email }}</a></p>
+        <p><mat-icon>my_location</mat-icon> location: {{ company.location }}</p>
+        <p><mat-icon>category</mat-icon> category: {{ company.category }}</p>
+        <p><mat-icon>website</mat-icon> website: {{ company.website }}</p>
+        <p><mat-icon>storage</mat-icon> capacity: {{ company.capacity }}</p>
+        <p><mat-icon>business_center</mat-icon> identity_number: {{ company.identity_number }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>

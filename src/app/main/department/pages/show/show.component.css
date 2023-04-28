@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 100% de la hauteur de la vue */
+}
+
+.block1, .block2 {
+  flex: 1; /* Prendre tout l'espace disponible */
+  padding: 20px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.block1 {
+  width: 300px;
+  height: 390px;
+  align-content: center;
+  background: #0c1e35;
+  color: #fff;
+  position: fixed;
+  top: 10px;
+  overflow: auto;
+}
+
+.block2 {
+  width: 300px;
+  height: 390px;
+  align-content: center;
+  background: #0c1e35;
+  position: fixed;
+  bottom: 10px;
+  overflow: auto;
+}
+
+.card{
+  background: transparent;
+  color: #fff;
+  padding: 10px;
+}
+
+.email-icon, .cin-icon, .phone-icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.user-card {
+  margin-top: 10px;
+}
+
+.mat-icon {
+  vertical-align: middle;
+  font-size: 18px;
+  margin-right: 5px;
+  color: #edf1d6;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+a:hover {
+  color: rgba(234, 115, 141, 0.65);
+}

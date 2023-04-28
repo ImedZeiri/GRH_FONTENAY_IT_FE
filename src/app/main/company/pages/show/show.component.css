@@ -1,51 +1,142 @@
-@import '../../../../../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
-
-body {
-  font-family: Roboto, Arial, sans-serif;
-  margin: 0;
+/* Styling for mat-card */
+.mat-card {
+  width: 100%; /* Adjust the width as needed */
+  margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.basic-container {
-  padding: 30px;
+/* Styling for mat-card-header */
+.mat-card-header {
+  display: flex;
+  align-items: center;
 }
 
-.version-info {
-  font-size: 8pt;
-  float: right;
+/* Styling for mat-card-avatar */
+.mat-card-avatar {
+  margin-right: 10px;
 }
 
-[mat-dialog-title] {
-  margin: -24px -24px 0px -24px !important;
-  padding: 10px 24px;
-  background: #0c1e35;
-  color: #fff;
-}
-[mat-dialog-content]{
-  margin: -1px -24px -24px -24px !important;
-  padding-top: 60px;
-  padding-right: 30px;
-  padding-bottom: 105px;
-  padding-left: 8px;
-  background: whitesmoke;
-  color: black;
-}
-[mat-dialog-actions]{
-  margin: -24px -24px -24px -24px !important;
-  width: 100%;
-  align-content: center;
-  background: #0c1e35;
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-}
-button{
-  border: 1px;
-  border-radius: 10px;
-  background: #0c1e35 !important;
-  color: white !important;
+/* Styling for mat-card-subtitle */
+.mat-card-subtitle {
   font-size: 12px;
+  color: #fff;
+  background-color: #0c1e35;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Styling for mat-card-title */
+.mat-card-title {
+  font-size: 24px;
   font-weight: bold;
-  padding: 12px 150px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  color: #333;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+/* Styling for mat-card-content */
+.mat-card-content {
+  margin-top: 20px;
+}
+
+/* Styling for mat-icon */
+mat-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Styling for contentEditable spans */
+[contentEditable="true"] {
+  cursor: pointer;
+  border-bottom: 1px dashed #ccc;
+  transition: border-color 0.3s ease-in-out;
+}
+
+[contentEditable="true"]:hover {
+  border-color: #999;
+}
+
+[contentEditable="true"]:focus {
+  outline: none;
+  border-color: #0c1e35;
+}
+
+/* Styling for mat-form-field */
+mat-form-field {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+/* Styling for mat-datepicker-toggle */
+mat-datepicker-toggle {
+  cursor: pointer;
+}
+
+/* Styling for mat-card-actions */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+/* Styling for Save Changes button */
+mat-card-actions button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 2px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+mat-card-actions button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for mat-card-content paragraphs */
+.mat-card-content p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Styling for mat-card-content spans */
+.mat-card-content span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  color: rgba(51, 51, 51, 0.75);
+  font-weight: bold;
+}
+
+/* Styling for editable spans */
+.editable-span {
+  position: relative;
+}
+
+.editable-span:after {
+  font-family: "FontAwesome";
+  font-size: 14px;
+  position: absolute;
+  top: -2px;
+  right: -18px;
+  color: #ea738d;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.editable-span:hover:after {
+  opacity: 1;
+}
+
+.editable-span.editing:after {
+  display: none;
 }

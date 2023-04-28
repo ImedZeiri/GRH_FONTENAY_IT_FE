@@ -30,8 +30,10 @@ export class AppComponent implements OnInit{
     this.links = [
       new NavigationLink("Home", ['home'], "home"),
       new NavigationLink("Users", ['users'], "supervisor_account"),
-      new NavigationLink("Copmany", ['company'], "account_balance"),
-      new NavigationLink("Department", ['depatrment'], "domain"),
+      new NavigationLink("Client", ['company'], "account_balance"),
+      new NavigationLink("Department", ['department'], "domain"),
+      new NavigationLink("Department", ['projects'], "business_center"),
+      new NavigationLink("Department", ['tasks'], "task"),
     ]
   }
   ngDoCheck(): void {

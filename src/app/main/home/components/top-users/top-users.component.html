@@ -1,10 +1,60 @@
-<div class="title">Best 5 Emplyers</div>
+<!--
+<div class="app-container" id="taskList">
+  <h1 class="app-header">TOP 3 EMPLOYER</h1>
+  <ul class="task-list">
+    <li class="task-list-item" *ngFor="let user of users | slice:0:3">
+      <mat-divider style="color: white"></mat-divider>
+      <mat-card class="user-card">
+        <mat-card-header class="user-card-header">
+          <mat-card-title class="user-card-name">{{ user.first_name }}</mat-card-title>
+          <span class="user-card-role" *ngIf="isUserRole(user.roles)">USER</span>
+          <span class="user-card-role" *ngIf="isAdminRole(user.roles)">ADMIN</span>
+        </mat-card-header>
+        <mat-card-content class="user-card-content">
+          <mat-icon class="user-card-phone-icon">phone</mat-icon>
+          <span class="user-card-phone">{{ user.phone }}</span>
+        </mat-card-content>
+        <mat-card-actions class="user-card-footer">
+          <button mat-button class="email-icon" color="primary" (click)="sendEmail(user.email)" matTooltip="{{ user.email }}">
+            <mat-icon>email</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  </ul>
+</div>
+-->
 
-<div class="user__info" *ngFor="let user of users | slice:0:5">
-  <h2 class="user__name">{{ user.first_name }}</h2>
-  <div class="user__contact">
-    <span class="user__email"><mat-icon>email</mat-icon> {{ user.email }}</span>
-    <span class="user__phone"><mat-icon>phone</mat-icon>  {{ user.phone }}</span>
-  </div>
-  <mat-divider></mat-divider>
+
+
+<!-- CURRENT TO DO LIST   -->
+
+<div id="container">
+  <h1>TOP 3 EMPLOYER
+    <p id="completedToDo" class="complete para">See completed list</p>
+  </h1>
+
+  <ul id="ulToDo" *ngFor="let user of users | slice:0:3">
+    <li class="comp"> <span class="delSpan">
+      <i class="fa fa-trash" aria-hidden="true">
+      </i>
+    </span>
+      <span class="move">
+        <i class="fa fa-check" aria-hidden="true">
+        </i>
+      </span>
+      <span>
+        {{ user.email }}
+      </span>
+    </li>
+  </ul>
+  <h6> Filtre By
+    <p id="completedToDo" class="complete para">
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Option 1</mat-radio-button>
+        <mat-radio-button value="2">Option 2</mat-radio-button>
+        <mat-radio-button value="3">Option 3</mat-radio-button>
+      </mat-radio-group>
+    </p>
+  </h6>
 </div>

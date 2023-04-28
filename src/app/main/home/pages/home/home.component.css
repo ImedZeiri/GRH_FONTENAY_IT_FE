@@ -2,37 +2,43 @@
   display: grid;
   width: 100%;
   height: 800px;
-  grid-template-columns: 300px 1fr 1fr;
+  grid-template-columns: 350px 1fr 1fr;
   grid-template-rows: 80px 1fr 1fr 100px;
   grid-gap: 1rem;
   grid-template-areas:
-    "header header header"
+    "cardNumber cardNumber cardNumber"
     "sidebar content-1 content-1"
     "sidebar content-2 content-3"
-    "footer footer footer";
+    "card-container card-container card-container";
 }
 
-.header {
-  grid-area: header;
+.cardNumber {
+  grid-area: cardNumber;
+  max-width: 93%;
+  gap: 2.5%;
 }
 
 .sidebar {
   grid-area: sidebar;
+  overflow: hidden;
 }
 
 .content-1 {
   grid-area: content-1;
+  overflow: auto;
 }
 
 .content-2 {
   grid-area: content-2;
+  overflow: auto;
 }
 
 .content-3 {
   grid-area: content-3;
+  overflow: auto;
 }
 
-.footer {
+.card-container {
   grid-area: footer;
   grid-row: 4 / 5;
   grid-column: 1 / 4;
@@ -49,29 +55,106 @@ body {
 }
 
 .item {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 4px;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .header {
   display: inline-block;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .sidebar {
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  background: rgba(12, 30, 53, 0) url(https://i.imgur.com/JHckSLZ.png) top left repeat;
-  font-family: "Open Sans", sans-serif;
+  background-color: rgba(22, 94, 146, 0.85);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .content-1,
 .content-2,
 .content-3 {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.footer {
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+}
 
+.content-4 {
+  width: calc(25% - 20px); /* Adjust the width as needed */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 100px;
+}
+
+div#wrapper {
+  max-width: 100%;
+  margin: 50px auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+header div#logo {
+  width: 200px;
+  height: 150px;
+  background-color: transparent;
+  border: 1px solid #aaa;
+  margin-right: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+header nav a {
+  display: inline-block;
+  width: calc(25% - 20px); /* Adjust the width as needed */
+  height: 75px;
+  background-color: transparent;
+  margin-right: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+main {
+  width: 100%;
+  height: 350px;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  margin-bottom: 20px;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+section div {
+  width: calc(25% - 20px); /* Adjust the width as needed */
+  height: 250px;
+  padding: 10px;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  margin-right: 10px;
+}
+
+footer {
+  width: 100%;
+  height: 150px;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }

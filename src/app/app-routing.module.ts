@@ -7,6 +7,7 @@ import {NotFoundComponent} from "../UI/Shared/components/not-found/not-found.com
 import {UserRoutingModule} from "./main/user/user-routing.module";
 import {HomeRoutingModule} from "./main/home/home-routing.module";
 import {CompanyRoutingModule} from "./main/company/company-routing.module";
+import {DepartmentRoutingModule} from "./main/department/department-routing.module";
 
 
 
@@ -25,7 +26,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: false}),
-    UserRoutingModule,CompanyRoutingModule,HomeRoutingModule],
+    UserRoutingModule,CompanyRoutingModule,HomeRoutingModule,DepartmentRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

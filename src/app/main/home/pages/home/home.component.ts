@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
   isClickedOutside: boolean = false;
   isLoading = true;
   totalItemUsers: number[];
+  toggled: any;
+  rightWidth = '0%';
+  leftWidth = '100%'
 
 
   constructor(private statisticsService: StatisticsService,
@@ -30,4 +33,18 @@ export class HomeComponent implements OnInit {
     this.companyTasksCount = this.statisticsService.getCompanyTasksCount();
     this.projectsCount = this.statisticsService.getProjectsCount();
   }
+  toggleWidth() {
+    if (this.toggled) {
+      this.rightWidth = '0%';
+      this.leftWidth = '100%';
+      this.toggled = false;
+      this.selectedRow = false;
+    } else
+    if (!this.toggled) {
+      this.rightWidth = '30%';
+      this.leftWidth = '70%'
+      this.toggled = false;
+    }
+  }
+
 }
