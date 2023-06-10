@@ -5,6 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Users } from './users';
 import {FormGroup} from "@angular/forms";
 import {AuthService} from "../../../core/services/login/auth.service";
+import {UserSkill} from "./UserSkill";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -58,8 +59,8 @@ export class UsersService {
   };
 
   updateUser(id: number, user: Users): Observable<Response[]> {
-    let url = apiUrl + '/users' + id;
-    return this.http.post<Response[]>(url, user, httpOptions).pipe(
+    let url = apiUrl + '/users/' + id;
+    return this.http.put<Response[]>(url, user, httpOptions).pipe(
       tap(heroes => console.log('updated user')),
       catchError(this.handleError('updateUser', []))
     );

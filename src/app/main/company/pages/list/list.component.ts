@@ -149,20 +149,12 @@ export class ListComponent implements OnInit {
   }
 
   openAddCompanyDialog() {
-    const dialogRefAdd = this.ngdialog.open(AddComponent, {
-      width: '350px',
-      height:'100%',
-      data: this.selectedRow,
-      position: {
-        right: '0px',
-        top: '13vh',
-      },
-      animation: { to: 'left'},
-      panelClass: 'backdrop-bg-Add-User',
-      backdropClass:'backdrop-bg-Add-User',
+    const dialogRef = this.dialog.open(AddComponent, {
+      width: '400px',
+      autoFocus: false,
     });
 
-    dialogRefAdd.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.getCompanies();
     });

@@ -1,0 +1,28 @@
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.skill-chip {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.mat-raised-button {
+  align-items: center;
+  gap: 50%;
+  justify-content: center;
+  color: #f7fafc;
+  height: 30px;
+  width: 80px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px; /* Espacement de 10 pixels à droite du bouton */
+  margin-right: 10px; /* Espacement de 10 pixels à droite du bouton */
+}

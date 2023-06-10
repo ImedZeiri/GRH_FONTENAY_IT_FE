@@ -1,15 +1,18 @@
-<div class="main-content">
-  <main>
-    <div class="cards">
-      <div class="card-single">
-        <div>
-          <h1>{{ value }}</h1>
-          <span>{{ label }}</span>
+<mat-card class="card card-sm">
+  <mat-card-content class="card-body">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <mat-icon class="bg-primary text-white avatar">{{iconClass}}</mat-icon>
+      </div>
+      <div class="col">
+        <div class="font-weight-medium">
+          {{ label }}
         </div>
-        <div>
-          <mat-icon class="card-icon">{{iconClass}}</mat-icon>
+        <div class="text-muted">
+          <h5>{{ value }} {{ 'Active' }}</h5>
         </div>
       </div>
     </div>
-  </main>
-</div>
+  </mat-card-content>
+</mat-card>
+

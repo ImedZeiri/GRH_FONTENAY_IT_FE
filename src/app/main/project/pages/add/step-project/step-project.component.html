@@ -1,0 +1,55 @@
+<form [formGroup]="AddProjectForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Owner</mat-label>
+    <input matInput formControlName="owner" required>
+    <mat-error *ngIf="AddProjectForm.get('owner')?.invalid && AddProjectForm.get('owner')?.touched">
+      Owner is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Client</mat-label>
+    <input matInput formControlName="client" required>
+    <mat-error *ngIf="AddProjectForm.get('client')?.invalid && AddProjectForm.get('client')?.touched">
+      Client is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" required>
+    <mat-error *ngIf="AddProjectForm.get('name')?.invalid && AddProjectForm.get('name')?.touched">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Start At</mat-label>
+    <input matInput [matDatepicker]="startDatePicker" formControlName="startAt" required>
+    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker></mat-datepicker>
+    <mat-error *ngIf="AddProjectForm.get('startAt')?.invalid && AddProjectForm.get('startAt')?.touched">
+      Start At is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>End At</mat-label>
+    <input matInput [matDatepicker]="endDatePicker" formControlName="endAt" required>
+    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #endDatePicker></mat-datepicker>
+    <mat-error *ngIf="AddProjectForm.get('endAt')?.invalid && AddProjectForm.get('endAt')?.touched">
+      End At is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Field</mat-label>
+    <input matInput formControlName="field" required>
+    <mat-error *ngIf="AddProjectForm.get('field')?.invalid && AddProjectForm.get('field')?.touched">
+      Field is required
+    </mat-error>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary">Submit</button>
+</form>

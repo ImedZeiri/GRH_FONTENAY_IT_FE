@@ -31,6 +31,8 @@ import {MatRadioModule} from "@angular/material/radio";
 import {CompanyModule} from "../company/company.module";
 import { StepProjectComponent } from './pages/add/step-project/step-project.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { StepTaskComponent } from './pages/add/step-task/step-task.component';
+import { StepHireComponent } from './pages/add/step-hire/step-hire.component';
 
 
 
@@ -42,6 +44,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     ListComponent,
     ShowComponent,
     StepProjectComponent,
+    StepTaskComponent,
+    StepHireComponent,
   ],
   imports: [
     CommonModule,

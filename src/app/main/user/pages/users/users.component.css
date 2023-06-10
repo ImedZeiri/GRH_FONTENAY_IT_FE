@@ -1,5 +1,4 @@
 .topPanel {
-  background-color: #165e92;
   background-repeat: no-repeat;
   background-position: top right;
   display: flex;
@@ -7,32 +6,59 @@
   align-items: center;
   color: #fff;
   height: 60px;
-  border-radius: 5px;
 }
 
 .topPanel__left {
   display: flex;
   align-items: center;
+  margin-right: -25px;
+  background-color: #0c1e35;
+  border-radius: 5px;
 }
 
 .topPanel__button {
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #f7fafc;
+  height: 30px;
+  width: 80px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: none; /* Ajout de cette ligne */
 }
 
-.close-button {
+.topPanel__left:hover,
+.topPanel__left:active {
+}
+
+.topPanel__button_icon {
   background-color: transparent;
+  color: #f7fafc;
+  width: 30px;
   border: none;
   cursor: pointer;
-  outline: none;
+  padding-left: 5px;
 }
 
-.close-icon {
-  color: #ffffff;
+.topPanel__icon {
+  font-size: 24px;
+}
+
+.topPanel__icon:hover,
+.topPanel__icon:active {
+  transform: scale(1.2);
+}
+
+
+.topPanel__right {
+  margin-right: 20px;
 }
 
 .container {
   display: flex;
-  flex-direction: row;
 }
 
 .leftContainer {
@@ -49,7 +75,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  position: relative;
+  top: -60px;
+  right: -30px;
 }
+
 
 .main {
   padding: 20px;
@@ -78,4 +108,22 @@ td{
   font-family: Arial;
   color: #030f23;
   font-size: 12px;
+}
+
+.delButton {
+  color: #f34642;
+  cursor: pointer;
+}
+.UpdateButton {
+  padding-left: 15px;
+  color: #003a98;
+  cursor: pointer;
+}
+.greenIcon{
+  color: #6a9f85;
+  cursor: pointer;
+}
+.redIcon{
+  color: #f34642;
+  cursor: pointer;
 }

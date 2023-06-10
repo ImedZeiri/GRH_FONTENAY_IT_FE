@@ -37,6 +37,11 @@ import {HeadersInterceptor} from "../../core/interceptors/headers.interceptor";
 import {CompanyModule} from "../company/company.module";
 import {SharedModule} from "../../../UI/Shared/shared.module";
 import { ProfilComponent } from './pages/profil/profil.component';
+import {CapitalizePipe} from "../../core/pipes/capitalize.pipe";
+import {KeysPipe} from "../../core/pipes/key.pipe";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 
@@ -50,6 +55,8 @@ import { ProfilComponent } from './pages/profil/profil.component';
     WidgetComponent,
     CustomCardComponent,
     ProfilComponent,
+    CapitalizePipe,
+    KeysPipe,
   ],
   imports: [
     CommonModule,
@@ -91,7 +98,10 @@ import { ProfilComponent } from './pages/profil/profil.component';
     AppRoutingModule,
     FormsModule,
     CompanyModule,
-    SharedModule
+    SharedModule,
+    MatAutocompleteModule,
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   providers: [
     CookieService,

@@ -3,12 +3,14 @@
     <app-widget [iconClass]="'supervisor_account'" [value]="totalItem.length.toString()" [label]="'Total users'"></app-widget>
     <app-widget [iconClass]="'how_to_reg'" [value]="totalItem.length.toString()" [label]="'Active users'"></app-widget>
   </div>
-  <div class="topPanel__left">
-    <button mat-button class="topPanel__button" (click)="openAddUserDialog()">Add New User</button>
-  </div>
-    <button mat-icon-button class="topPanel__close-button" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
-      <mat-icon>close</mat-icon>
-    </button>
+    <div class="topPanel__left" >
+      <a mat-fab extended class="topPanel__button" (click)="openAddUserDialog()">
+        <mat-icon>add</mat-icon>Add</a>
+      <mat-button class="topPanel__button_icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
+        <mat-icon class="topPanel__icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">close</mat-icon>
+      </mat-button>
+    </div>
+
 </div>
 
 <div *ngIf="!isLoading; else table">
@@ -21,13 +23,13 @@
 </mat-form-field>
 
 <div class="container">
-  <div class="leftContainer" [ngStyle]="{ 'width': leftWidth }">
+  <div class="leftContainer" [ngStyle]="{ 'width': leftWidth}">
     <div class="main" >
       <div class="div1">
         <div class="card-container">
-          <table mat-table [dataSource]="dataSource">
+          <table mat-table [dataSource]="dataSource" [ngStyle]="{'box-shadow': bg }">
             <ng-template #table>
-              <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+              <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column" >
                 <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
                 <td mat-cell *matCellDef="let user" (click)="onRowSelected(user)" [class.selected]="selectedRow === user">
                   <ng-container *ngIf="column !== 'accountStatus'">{{ user[column] }}</ng-container>

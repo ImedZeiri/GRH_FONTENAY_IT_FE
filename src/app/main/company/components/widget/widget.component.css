@@ -1,72 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
-
-:root{
-  --main-color: #11101d;
-  --color-dark: #1D2231;
-  --text-grey:  #8390A2;
+.card {
+  border-radius: 4px;
+  border: 5px;
+  border-color: transparent !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  width: 280px; /* Adjust the width as needed */
+  height: 60%;
+  color: #0b2f48;
+  transition: transform 0.08s ease-in-out ; /* Increase the duration to slow down the animation */
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 12px 0px, rgba(0, 0, 0, 0.12) 0px 6px 16px 0px;
+}
+.card-body {
+  padding-right: 20px;
 }
 
-main{
-  margin-top: 1px;
-  background: transparent;
-}
-.cards{
-  display: block;
-  width: 300px !important;
-}
-.card-single{
+.row {
   display: flex;
-  width: 90% ;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.24), 0 15px 40px rgba(0, 0, 0, 0.8) !important;
-  justify-content: space-between;
-  background: #0c1e35 ;
-  padding: 1.5rem;
-  animation: animeCard 2s cubic-bezier(0.16, 1, 0.3, 1);
-
-}
-.card-single div:last-child span{
-  color: var(--main-color);
-  font-size: 3rem;
-}
-.card-single div:first-child span{
-  color: var(--text-grey);
+  align-items: center;
 }
 
-.card-single:last-child h1,
-.card-single:last-child div:first-child span
-{
-  color: #a3c7d6;
+.col-auto {
+  margin-right: 10px;
 }
 
-.card-single:last-child div:last-child span
-{
-  color: #5D8393FF;
-}
-.card-icon {
-  color: #5D8393FF;
-  animation: animeCardIconColor 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+.bg-primary {
+  background-color: #2980b9;
 }
 
-@keyframes animeCard {
-  0% {
-    width: 60% ;
-  }
-  100% {
-    width: 90% ;
-  }
+.text-white {
+  color: #fff;
 }
 
-@keyframes animeCardIconColor {
-  0% {
-    color: #0c1e35;
-  }
-  50% {
-    color: #0c1e35;
-  }
-  75% {
-    color: #5D8393FF;
-  }
-  100% {
-    color: #5D8393FF ;
-  }
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.icon {
+  stroke-width: 2;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.col {
+  flex: 1;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.text-muted {
+  color: #888;
 }

@@ -29,7 +29,8 @@
             </mat-card-content>
             <mat-card-actions>
               <button mat-button (click)="openProject(project)">More</button>
-              <button mat-button class="UpdateButton" (click)="onRowClicked(project,$event)">Edit</button>
+              <button mat-button matTooltip="Info about the action"
+                      class="UpdateButton" (click)="onRowClicked(project,$event)">Edit</button>
             </mat-card-actions>
           </mat-card>
         </div>

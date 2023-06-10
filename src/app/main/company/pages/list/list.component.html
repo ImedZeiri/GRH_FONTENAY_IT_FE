@@ -4,11 +4,11 @@
     <app-widget [background]="'linear-gradient(to right, #141e30, #243b55)'" [iconClass]="'account_balance'" [value]="totalItem.length.toString()" [label]="'Active Companies'"></app-widget>
   </div>
   <div class="topPanel__left" >
-    <button mat-button class="topPanel__button" (click)="openAddCompanyDialog()">
-      <mat-icon>account_balance</mat-icon>Add New Copmany</button>
-    <button class="close-button" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
-      <mat-icon class="close-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="home">close</mat-icon>
-    </button>
+    <a mat-fab extended class="topPanel__button" (click)="openAddCompanyDialog()">
+      <mat-icon>add</mat-icon>Add</a>
+    <mat-button class="topPanel__button_icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
+      <mat-icon class="topPanel__icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">close</mat-icon>
+    </mat-button>
   </div>
 </div>
 

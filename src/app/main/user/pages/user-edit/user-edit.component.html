@@ -1,58 +1,57 @@
-<form [formGroup]="EditUserForm" (ngSubmit)="onUpdateUser(EditUserForm)">
-  <h1>Update User</h1>
+<h2>Edit User</h2>
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
   <mat-form-field>
-    <input type="text" matInput formControlName="firstName" placeholder="Firstname" [(ngModel)]="user.firstName">
-  </mat-form-field>
-  <mat-form-field>
-    <input type="text" matInput formControlName="lastName" placeholder="Lastname"   autocomplete="on">
-  </mat-form-field>
-  <mat-form-field>
-    <input type="text" matInput formControlName="email" placeholder="Email"   autocomplete="on">
-  </mat-form-field>
-  <mat-form-field>
-    <input type="text" matInput formControlName="password" placeholder="password"   autocomplete="on">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Gender</mat-label>
-    <mat-select disableRipple formControlName="gender">
-      <mat-option value="male">Male</mat-option>
-      <mat-option value="female">Female</mat-option>
+    <mat-label>Account Status:</mat-label>
+    <mat-select formControlName="account_status">
+      <mat-option [value]="1">Active</mat-option>
+      <mat-option [value]="0">Blocked</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field >
-    <mat-label>Birthday</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="birthdayss">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+
+
   <mat-form-field>
-    <input type="number" matInput formControlName="cin" placeholder="CIN"   autocomplete="on">
+    <mat-label>Email:</mat-label>
+    <input matInput type="text" id="email" formControlName="email">
+    <mat-error *ngIf="editForm.controls['email'].invalid && editForm.controls['email'].touched">
+      Please enter a valid email.
+    </mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <span matPrefix>+216 &nbsp;</span>
-    <input type="tel" matInput formControlName="phone" placeholder="555-555-1234">
-  </mat-form-field>
-  <mat-form-field >
-    <mat-label>Hiring date</mat-label>
-    <input matInput [matDatepicker]="pickerHiring" formControlName="hiring_datess">
-    <mat-datepicker-toggle matSuffix [for]="pickerHiring"></mat-datepicker-toggle>
-    <mat-datepicker #pickerHiring></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Role</mat-label>
-    <mat-select disableRipple formControlName="roles">
-      <mat-option value="ROLE_USER">User</mat-option>
-      <mat-option value="ROLE_ADMIN">Admin</mat-option>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Roles:</mat-label>
+    <mat-select id="roles" formControlName="roles" multiple>
+      <mat-option [value]="'ROLE_ADMIN'">Admin</mat-option>
+      <mat-option [value]="'ROLE_USER'">User</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Department</mat-label>
-    <mat-select formControlName="departments" multiple>
-      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-button type="submit" >Submit</button>
+
+  <div *ngIf="editForm.controls['roles'].invalid && editForm.controls['roles'].touched">
+    <small class="error-message">Please select at least one role.</small>
+  </div>
+
+
+
+
+  <h3>User Skills</h3>
+  <div *ngIf="userSkills.length > 0; else noSkillsExist">
+    <mat-chip-list>
+      <mat-chip *ngFor="let skill of userSkills" class="skill-chip">
+        <strong>{{ skill.name }}</strong> (Rate: {{ skill.rate }})
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <ng-template #noSkillsExist>
+    <p>No skills exist.</p>
+  </ng-template>
+
+
+
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">Submit</button>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+  </div>
 </form>
-
-
-

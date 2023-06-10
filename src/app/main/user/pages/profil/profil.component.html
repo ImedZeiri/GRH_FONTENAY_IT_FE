@@ -1,0 +1,21 @@
+<div class="profile">
+  <h2>Profil utilisateur</h2>
+  <ul>
+    <li><strong>Nom :</strong> {{ currentUser.last_name }}</li>
+    <li><strong>Prénom :</strong> {{ currentUser.first_name }}</li>
+    <li><strong>CIN :</strong> {{ currentUser.cin }}</li>
+    <li><strong>Date de naissance :</strong> {{ currentUser.birthday }}</li>
+    <li><strong>Date d'embauche :</strong> {{ currentUser.hiring_date }}</li>
+    <li><strong>E-mail :</strong> {{ currentUser.email }}</li>
+    <li>
+      <strong>Rôles :</strong>
+      <ul>
+        <li *ngFor="let role of currentUser.roles">{{ role }}</li>
+      </ul>
+    </li>
+    <li><strong>Téléphone :</strong> {{ currentUser.phone }}</li>
+    <li><strong>Genre :</strong> {{ currentUser.gender }}</li>
+    <li><strong>Token :</strong> {{ currentUser.token }}</li>
+    <li><strong>Date d'expiration du token :</strong> {{ currentUser.token_expires_at }}</li>
+  </ul>
+</div>
