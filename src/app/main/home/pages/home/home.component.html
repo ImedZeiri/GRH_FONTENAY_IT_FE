@@ -21,8 +21,16 @@
     <app-profile></app-profile>
   </div>
   <div class="item content-1">
-    <app-tab-users></app-tab-users>
+    <div style="display: flex;">
+      <div style="flex: 1;">
+        <app-chart-double></app-chart-double>
+      </div>
+      <div style="flex: 1;margin-top: -20px">
+        <app-chart-task6></app-chart-task6>
+      </div>
+    </div>
   </div>
+
   <div class="item content-2">
     <app-top-users></app-top-users>
   </div>
@@ -38,15 +46,15 @@
   </div>
 
   <header>
-    <div id="logo">logo</div>
     <nav>
-      <div>h1</div>
-      <div>h2</div>
-      <div>h3</div>
-      <div>h4</div>
+      <a *ngFor="let project of projects | slice:0:4">
+        <app-card-project [project]="project"></app-card-project>
+      </a>
     </nav>
   </header>
-  <main>kzdyjhvc cm</main>
+  <main>
+    <app-tab-users></app-tab-users>
+  </main>
   <section>
     <div>s2</div>
     <div>s3</div>

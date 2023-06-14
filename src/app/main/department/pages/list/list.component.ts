@@ -24,6 +24,10 @@ export class ListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  rightWidth = '0%';
+  leftWidth = '100%'
+  toggled: boolean;
+  opacity= 0;
   displayedColumns: string[] = ['id', 'name', 'capacity','category'];
   dataSource: MatTableDataSource<any>;
   departments: Department[];
@@ -43,6 +47,41 @@ export class ListComponent implements OnInit {
                private _sidePanelService: SidePanelService,
                private authService:AuthService) {
     this.dataSource = new MatTableDataSource<any>();
+  }
+  toggleWidth() {
+    if (this.toggled) {
+      this.rightWidth = '0%';
+      this.leftWidth = '100%';
+      this.toggled = false;
+      this.opacityOut();
+    } else if (!this.toggled ) {
+      this.rightWidth = '25%';
+      this.leftWidth = '75%';
+      this.toggled = true;
+      this.opacityIn();
+    }
+  }
+
+  opacityIn() {
+    let opacity = 0;
+    const intervalId = setInterval(() => {
+      opacity += 0.1;
+      this.opacity = opacity;
+      if (opacity >= 1 ) {
+        clearInterval(intervalId);
+      }
+    }, 20);
+  }
+
+  opacityOut() {
+    let opacity = 1;
+    const intervalId = setInterval(() => {
+      opacity -= 0.1;
+      this.opacity = opacity;
+      if (opacity <= 0) {
+        clearInterval(intervalId);
+      }
+    }, 20);
   }
 
   ngOnInit(): void {

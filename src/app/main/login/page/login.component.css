@@ -55,10 +55,10 @@ a {
 
 button {
   border-radius: 5px;
-  height: 40px;
+  height: 35px;
   width: 150px;
   border: 0px;
-  background: linear-gradient(to right, #2ba0ff, #023257);
+  background: #2ba0ff;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;

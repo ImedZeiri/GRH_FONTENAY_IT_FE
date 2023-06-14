@@ -10,10 +10,13 @@
 
 .topPanel__left {
   display: flex;
+  position: fixed;
   align-items: center;
   margin-right: -25px;
-  background-color: #0c1e35;
+  background-color: #0c334f;
   border-radius: 5px;
+  margin-left: -1px;
+  right: 20px;
 }
 
 .topPanel__button {
@@ -63,9 +66,10 @@
 
 .leftContainer {
   background-color: transparent;
-  overflow-y: auto;
+  overflow-y: hidden;
   transition: width 0.3s ease-in-out;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .rightContainer {
@@ -76,8 +80,8 @@
   justify-content: center;
   border-radius: 5px;
   position: relative;
-  top: -60px;
   right: -30px;
+  overflow: hidden;
 }
 
 
@@ -88,19 +92,29 @@
 .div1 {
   margin-bottom: 20px;
 }
-
-.mat-table{
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+.rightStatWidth{
+  overflow-y: hidden;
+  transition: width 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  overflow: hidden;
+  right: 0px;
+  height: 80%;
 }
+.mat-table{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;}
 table {
   position: relative;
   width: 100%;
   align-items: center;
   justify-content: flex-end;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;}
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
 th{
-  background-color: rgba(51, 102, 153, 0.2);
-  color: #369;
+  background-color: #0c334f;
+  color: white;
   font-size: 13px;
   font-family: "Times New Roman", Times, serif;
 }
@@ -108,6 +122,12 @@ td{
   font-family: Arial;
   color: #030f23;
   font-size: 12px;
+}
+.mat-paginator{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+.mat-form-field-filter {
+  width: 100%;
 }
 
 .delButton {

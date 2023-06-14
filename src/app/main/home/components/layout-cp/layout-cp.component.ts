@@ -16,8 +16,7 @@ export class LayoutCPComponent implements OnInit {
 
   OpenDialog(): void {
     const dialogRef = this.dialog.open(AddComponent, {
-      width: '80%',
-      height:'90%',
+      width: '30%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

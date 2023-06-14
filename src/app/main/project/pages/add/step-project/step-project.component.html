@@ -1,13 +1,5 @@
 <form [formGroup]="AddProjectForm" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <mat-label>Owner</mat-label>
-    <input matInput formControlName="owner" required>
-    <mat-error *ngIf="AddProjectForm.get('owner')?.invalid && AddProjectForm.get('owner')?.touched">
-      Owner is required
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
     <mat-label>Client</mat-label>
     <input matInput formControlName="client" required>
     <mat-error *ngIf="AddProjectForm.get('client')?.invalid && AddProjectForm.get('client')?.touched">

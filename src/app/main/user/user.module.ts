@@ -42,6 +42,8 @@ import {KeysPipe} from "../../core/pipes/key.pipe";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { Chart1Component } from './components/chart1/chart1.component';
+import { QrCodeDialogComponent } from './components/qr-code-dialog/qr-code-dialog.component';
 
 
 
@@ -57,6 +59,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     ProfilComponent,
     CapitalizePipe,
     KeysPipe,
+    Chart1Component,
+    QrCodeDialogComponent,
   ],
   imports: [
     CommonModule,

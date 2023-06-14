@@ -23,6 +23,8 @@ import { TabUsersComponent } from './components/tab-users/tab-users.component';
 import { LayoutCPComponent } from './components/layout-cp/layout-cp.component';
 import { ChartCLTComponent } from './components/chart-clt/chart-clt.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { CardProjectComponent } from './components/card-project/card-project.component';
+import { ChartDoubleComponent } from './components/chart-double/chart-double.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +35,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
          TabUsersComponent,
          LayoutCPComponent,
          ChartCLTComponent,
+         CardProjectComponent,
+         ChartDoubleComponent,
     ],
     exports: [
         WidgetComponent,
@@ -40,7 +44,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
         ProfileComponent,
         TabUsersComponent,
         LayoutCPComponent,
-        ChartCLTComponent
+        ChartCLTComponent,
+        CardProjectComponent,
+        ChartDoubleComponent
     ],
   imports: [
     CommonModule,

@@ -8,7 +8,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {AccessDeniedComponent} from "../UI/Shared/components/access-denied/access-denied.component";
 import { Location } from '@angular/common';
 import {UserShowComponent} from "./main/user/pages/user-show/user-show.component";
-import {NgDialogAnimationService} from "ng-dialog-animation"; // Importe le service Location pour la redirection
+import {NgDialogAnimationService} from "ng-dialog-animation";
+import {UserDataService} from "./main/login/user-data.service"; // Importe le service Location pour la redirection
 
 
 @Component({
@@ -19,14 +20,27 @@ import {NgDialogAnimationService} from "ng-dialog-animation"; // Importe le serv
 export class AppComponent implements OnInit{
   public configuration: DashboardLayoutConfiguration;
   public linksAdmin: NavigationLink[];
+  public linksClient: NavigationLink[];
   public linksUser: NavigationLink[];
   public links: NavigationLink[];
   private deniedPathsUser: string[]
+  private deniedPathsClient: string[]
   private deniedPath: string[]
+  private linksBanned: NavigationLink[];
+  private deniedPathsBanned: string[];
   displayMenu=false;
 
   private users: any;
-  constructor(private cookie:CookieService, private route:Router,private service:UsersService,private dialog: MatDialog, private location: Location,               public ngdialog: NgDialogAnimationService,
+  currentUser: any;
+
+  constructor(private cookie:CookieService,
+              private userDataService: UserDataService,
+              private route:Router,
+              private service:UsersService,
+              private dialog: MatDialog,
+              private location: Location,
+              public ngdialog: NgDialogAnimationService,
+
   ) {
     this.route.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -77,6 +91,9 @@ export class AppComponent implements OnInit{
       '/company',
       '/department',
     ];
+    this.deniedPathsClient= [
+      '/company',
+    ];
     this.linksAdmin = [
       new NavigationLink("Home", ['home'], "home"),
       new NavigationLink("Users", ['users'], "supervisor_account"),
@@ -85,20 +102,42 @@ export class AppComponent implements OnInit{
       new NavigationLink("projects", ['projects'], "business_center"),
       new NavigationLink("tasks", ['tasks'], "task"),
     ];
+    this.linksClient = [
+      new NavigationLink("Home", ['home'], "home"),
+      new NavigationLink("Users", ['users'], "supervisor_account"),
+      new NavigationLink("Department", ['department'], "domain"),
+      new NavigationLink("projects", ['projects'], "business_center"),
+      new NavigationLink("tasks", ['tasks'], "task"),
+    ];
     this.linksUser = [
       new NavigationLink("Home", ['home'], "home"),
       new NavigationLink("projects", ['projects'], "business_center"),
       new NavigationLink("tasks", ['tasks'], "task"),
+    ];
+    this.linksBanned = [];
+    this.deniedPathsBanned =[
+      '/users',
+      '/company',
+      '/department',
+      '/projects',
+      '/tasks'
     ]
     const roles = localStorage.getItem('roles');
+    const accountStatus = localStorage.getItem('accountStatus')
 
-    if (roles) {
+    if (roles && (accountStatus == '1')) {
       if (roles.includes('ADMIN')) {
         this.links = this.linksAdmin;
-      } else if (!roles.includes('ADMIN')) {
+      } else if (!roles.includes('ADMIN') && !roles.includes('CLIENT') ){
         this.links = this.linksUser;
         this.deniedPath= this.deniedPathsUser
+      } else if (roles.includes('CLIENT')){
+        this.links = this.linksClient;
+        this.deniedPath = this.deniedPathsClient;
       }
+    }else if (accountStatus == '0') {
+      this.links = this.linksBanned;
+      this.deniedPath = this.deniedPathsBanned;
     }
 
   }
@@ -111,25 +150,11 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getConnectedUser();
-  }
-  getConnectedUser(){
-    this.service.getUsers().subscribe((res)=>{
-      this.users = res['hydra:member'];
-      this.users = this.mappingUsers(res['hydra:member']);
-      const currentUser = this.users.find(user => user.username === localStorage.getItem('username'));
-      localStorage.setItem('id',currentUser.id)
-    }, error => {
-      console.log(error);
-    });
-    return this.users.id;
-  }
-  mappingUsers(data:any[]){
-    let newUsers = data.map(item=>{
-      return{
-        ...item
+    this.route.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.checkAccess(event.url);
       }
-    })
-    return newUsers
+    });
+    this.createLinks();
   }
 }

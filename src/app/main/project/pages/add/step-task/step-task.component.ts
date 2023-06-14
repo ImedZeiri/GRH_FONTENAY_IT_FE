@@ -1,23 +1,21 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { MatDialogRef } from "@angular/material/dialog";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { TaskService } from "../../services/task.service";
-import { Task } from "../../services/task";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {ProjectService} from "../../../project/services/project.service";
-import {ProjectDataService} from "../../../project/services/project-data.service";
-import {Project} from "../../../project/services/project";
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TaskService } from '../../../../task/services/task.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProjectDataService } from '../../../services/project-data.service';
+import { ProjectService } from '../../../services/project.service';
+import {Project} from "../../../services/project";
+import { forkJoin } from 'rxjs';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  selector: 'app-step-task',
+  templateUrl: './step-task.component.html',
+  styleUrls: ['./step-task.component.css']
 })
-export class AddComponent implements OnInit {
+export class StepTaskComponent implements OnInit {
   AddTaskForm: FormGroup;
-  @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
-  @Input() projectId: number;
-  tasks: any[] = [];
+  projectId: number;
+  tasks: any[] = []; // Array to store created tasks
   project: any;
 
   constructor(
@@ -69,7 +67,6 @@ export class AddComponent implements OnInit {
         this.openSnackBar('Task created', '');
         this.tasks.push('/api/tasks/'+response['id']);
         this.updateProjectTasks(this.tasks); // Update the project with the task IDs
-        this.formSubmitted.emit();
         this.AddTaskForm.reset(); // Reset the form
       },
       error => {

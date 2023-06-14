@@ -41,7 +41,7 @@ export class DashboardLayoutComponent implements OnInit {
     if (width < 768)
       this._sidePanelService.changeState(SidePanelState.CLOSE);
     else if (width < 991)
-      this._sidePanelService.changeState(SidePanelState.COLLAPSE);
+      this._sidePanelService.changeState(SidePanelState.OPEN);
     else
       this._sidePanelService.changeState(SidePanelState.OPEN);
   }

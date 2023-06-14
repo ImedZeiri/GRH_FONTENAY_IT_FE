@@ -1,11 +1,11 @@
 <mat-stepper #stepper>
-  <mat-step label="Step 1">
+  <mat-step label="Project">
     <app-step-project (formSubmitted)="onSubmitForm()"></app-step-project>
   </mat-step>
-  <mat-step label="Step 2">
+  <mat-step label="Task">
     <app-step-task (formSubmitted)="onSubmitForm()" ></app-step-task>
   </mat-step>
-  <mat-step label="Step 3">
+  <mat-step label="Hire">
     <app-step-hire (formSubmitted)="onSubmitForm()"></app-step-hire>
   </mat-step>
 </mat-stepper>

@@ -1,0 +1,37 @@
+<form [formGroup]="AddHireForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="name" required>
+    <mat-error *ngIf="AddHireForm.get('name')?.invalid && AddHireForm.get('name')?.touched">
+      Le nom est requis
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Poste</mat-label>
+    <input matInput formControlName="position" required>
+    <mat-error *ngIf="AddHireForm.get('position')?.invalid && AddHireForm.get('position')?.touched">
+      Le poste est requis
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Département</mat-label>
+    <input matInput formControlName="department" required>
+    <mat-error *ngIf="AddHireForm.get('department')?.invalid && AddHireForm.get('department')?.touched">
+      Le département est requis
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Date de début</mat-label>
+    <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" required>
+    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker></mat-datepicker>
+    <mat-error *ngIf="AddHireForm.get('startDate')?.invalid && AddHireForm.get('startDate')?.touched">
+      La date de début est requise
+    </mat-error>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary">Soumettre</button>
+</form>

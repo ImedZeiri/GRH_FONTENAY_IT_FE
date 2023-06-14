@@ -11,9 +11,6 @@
         <input type="text" matInput formControlName="email" placeholder="Email"   autocomplete="on">
       </mat-form-field>
       <mat-form-field>
-        <input type="text" matInput formControlName="password" placeholder="password"   autocomplete="on">
-      </mat-form-field>
-      <mat-form-field>
         <mat-label>Gender</mat-label>
         <mat-select disableRipple formControlName="gender">
           <mat-option value="male">Male</mat-option>
@@ -40,10 +37,11 @@
         <mat-datepicker #pickerHiring></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Role</mat-label>
-        <mat-select disableRipple formControlName="roles">
-          <mat-option value="ROLE_USER">User</mat-option>
-          <mat-option value="ROLE_ADMIN">Admin</mat-option>
+        <mat-label>Roles:</mat-label>
+        <mat-select id="roles" formControlName="roles" multiple>
+          <mat-option [value]="'ROLE_ADMIN'">Admin</mat-option>
+          <mat-option [value]="'ROLE_USER'">User</mat-option>
+          <mat-option [value]="'ROLE_CLIENT'">Client</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>

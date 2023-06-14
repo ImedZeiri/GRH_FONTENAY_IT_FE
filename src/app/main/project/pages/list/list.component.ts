@@ -130,7 +130,7 @@ export class ListComponent implements OnInit {
   }
   OpenDialog(): void {
     const dialogRef = this.dialog.open(AddComponent, {
-      width: '80%',
+      width: '30%',
       height:'90%',
     });
 

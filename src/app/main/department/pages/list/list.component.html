@@ -1,11 +1,17 @@
-<div class="main" [class.clicked-outside]="isClickedOutside">
-  <div class="topPanel">
-    <div class="topPanel__left" >
-      <button mat-button class="topPanel__button" (click)="openAddDepartmentDialog()">Add New Department</button>
-    </div>
-    <div class="container">
-    </div>
+<div class="topPanel" [class.clicked-outside]="isClickedOutside">
+
+  <div class="topPanel__left" >
+    <a mat-fab extended class="topPanel__button" (click)="openAddDepartmentDialog()">
+      <mat-icon>add</mat-icon>Add</a>
+    <mat-button class="topPanel__button_icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
+      <mat-icon class="topPanel__icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">close</mat-icon>
+    </mat-button>
   </div>
+
+</div>
+
+
+<div class="main" [class.clicked-outside]="isClickedOutside">
   <div class="div1">
     <div *ngIf="isLoading; else table">
       <div *ngFor="let item of totalItem">
@@ -18,7 +24,6 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </mat-form-field>
 
-    <div class="mat-elevation-z8" >
       <table mat-table [dataSource]="dataSource">
         <ng-template #table>
           <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
@@ -37,7 +42,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions');"></tr>
       </table>
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of copmanys"></mat-paginator>
-    </div>
   </div>
   <div class ="right">
     <div class="div2">
@@ -50,7 +54,7 @@
     </div>
     <div class="div3">
       <div class="right-div-body">
-        <app-add></app-add>
+        <app-bar-chart></app-bar-chart>
       </div>
     </div>
   </div>

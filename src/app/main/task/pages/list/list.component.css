@@ -18,13 +18,12 @@ body {
   padding-left: 10px;
   display: flex;
   align-items: center;
+  margin-top: -50px;
 }
 .navbar.app {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.2rem;
   border-radius: 5px;
+  height: 1px;
   background: #0067a3;
-  justify-content: center;
 }
 .navbar.board{
   display: block;
@@ -35,7 +34,7 @@ body {
 .lists {
   display: flex;
   overflow-x: auto;
-  padding-top: 50px;
+
 }
 .lists > * {
   flex: 0 0 auto;

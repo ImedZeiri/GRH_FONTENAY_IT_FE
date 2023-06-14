@@ -28,8 +28,8 @@ export class UsersComponent implements OnInit {
   isLoading = false;
   totalItem: number[];
   rightWidth = '0%';
-  leftWidth = '100%';
-  bg = "transparent";
+  leftWidth = '70%';
+  rightStatWidth = '30%'
   selectedRow: any = false;
   toggled: boolean;
   opacity = 0;
@@ -46,14 +46,14 @@ export class UsersComponent implements OnInit {
   toggleWidth() {
     if (this.toggled) {
       this.rightWidth = '0%';
-      this.leftWidth = '100%';
-      this.bg = "none";
+      this.leftWidth = '70%';
+      this.rightStatWidth='30%'
       this.toggled = false;
       this.opacityOut();
     } else if (!this.toggled) {
+      this.rightStatWidth = '0%';
       this.rightWidth = '25%';
       this.leftWidth = '75%';
-      this.bg = "rgb(38, 57, 77) 0px 20px 30px -10px";
       this.toggled = true;
       this.opacityIn();
     }

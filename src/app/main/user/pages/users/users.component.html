@@ -17,17 +17,16 @@
   <app-content-loader></app-content-loader>
 </div>
 
-<mat-form-field class="mat-form-field-filter">
-  <mat-label>Search</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
-</mat-form-field>
-
 <div class="container">
   <div class="leftContainer" [ngStyle]="{ 'width': leftWidth}">
-    <div class="main" >
-      <div class="div1">
+    <div class="main">
+      <div class="div1" >
         <div class="card-container">
-          <table mat-table [dataSource]="dataSource" [ngStyle]="{'box-shadow': bg }">
+          <mat-form-field class="mat-form-field-filter">
+            <mat-label>Search</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+          </mat-form-field>
+          <table mat-table [dataSource]="dataSource">
             <ng-template #table>
               <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column" >
                 <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
@@ -42,7 +41,6 @@
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let user">
                   <mat-icon class="delButton" (click)="onDeleteUser(user)">delete</mat-icon>
-                  <mat-icon class="UpdateButton" (click)="openEditUser(user)">edit</mat-icon>
                 </td>
               </ng-container>
             </ng-template>
@@ -53,6 +51,11 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="rightStatWidth" [ngStyle]="{ 'width': rightStatWidth, 'opacity':1-opacity }">
+    <p>
+      <app-chart1></app-chart1>
+    </p>
   </div>
   <div class="rightContainer" [ngStyle]="{ 'width': rightWidth, 'opacity':opacity }">
     <app-user-show [data]="selectedRow" *ngIf="selectedRow"></app-user-show>

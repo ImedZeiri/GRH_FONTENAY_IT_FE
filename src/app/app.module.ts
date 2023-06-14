@@ -27,6 +27,10 @@ import {ProjectModule} from "./main/project/project.module";
 import {TaskModule} from "./main/task/task.module";
 import {FormsModule} from "../UI/Material/Forms/forms.module";
 import {ButtonsModule} from "../UI/Material/Buttons/buttons.module";
+import { QrCodeDiagLoginComponent } from './main/login/component/qr-code-diag-login/qr-code-diag-login.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { QrCodeScannerComponent } from './main/login/component/qr-code-scanner/qr-code-scanner.component';
+import {LayoutModule} from "../UI/Material/Layout/layout.module";
 
 @NgModule({
   declarations: [
@@ -34,6 +38,8 @@ import {ButtonsModule} from "../UI/Material/Buttons/buttons.module";
     LoginComponent,
     AppComponent,
     HomeComponent,
+    QrCodeDiagLoginComponent,
+    QrCodeScannerComponent,
 
   ],
   imports: [
@@ -57,7 +63,9 @@ import {ButtonsModule} from "../UI/Material/Buttons/buttons.module";
     ProjectModule,
     TaskModule,
     FormsModule,
-    ButtonsModule
+    ButtonsModule,
+    MatDialogModule,
+    LayoutModule
   ],
   providers: [
     CookieService,

@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/login/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import {QrCodeScannerComponent} from "../component/qr-code-scanner/qr-code-scanner.component";
+import {UserDataService} from "../user-data.service";
+import {UsersService} from "../../user/services/users.service";
 
 @Component({
   selector: 'app-login',
@@ -16,12 +20,17 @@ export class LoginComponent implements OnInit {
   decodedToken: any;
   helper = new JwtHelperService();
   error: string = '';
-  Authorized: boolean;
+  private users: any;
+  currentUser: any;
 
   constructor(
     private service: AuthService,
     private route: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialog,
+    private userDataService : UserDataService,
+    private uservice : UsersService
+
   ) {
     localStorage.clear();
   }
@@ -60,15 +69,25 @@ export class LoginComponent implements OnInit {
         (result) => {
           try {
             this.responsedata = result;
+            this.userDataService.setResponsedata(this.responsedata);
             localStorage.setItem('refresh_token', this.responsedata.refresh_token);
             localStorage.setItem('token', this.responsedata.token);
             this.decodedToken = this.helper.decodeToken(this.responsedata.token);
             localStorage.setItem('username', this.decodedToken.username);
-            this.decodedToken = this.helper.decodeToken(this.responsedata.token);
-            localStorage.setItem('roles', this.decodedToken.roles.toString());
-            this.route.navigate(['home']);
-            this.isLoading = false;
-            this.showSuccess('Login successful', 'Login successful');
+
+            this.uservice.getUsers().subscribe((res) => {
+              this.users = res['hydra:member'];
+              this.currentUser = this.users.find(user => user.username === localStorage.getItem('username'));
+              localStorage.setItem('id', this.currentUser.id);
+              localStorage.setItem('accountStatus', this.currentUser.accountStatus);
+
+              localStorage.setItem('roles', this.decodedToken.roles.toString());
+              this.route.navigate(['home']);
+              this.isLoading = false;
+              this.showSuccess('Login successful', 'Login successful');
+            }, error => {
+              console.log(error);
+            });
           } catch (error) {
             this.error = 'Login failed';
             this.showError('Login Failed', 'Login Failed');
@@ -82,7 +101,6 @@ export class LoginComponent implements OnInit {
         }
       );
 
-
       if (this.Login.value.rememberMe) {
         localStorage.setItem('username', this.Login.value.username);
         localStorage.setItem('password', this.Login.value.password);
@@ -91,5 +109,13 @@ export class LoginComponent implements OnInit {
         localStorage.removeItem('password');
       }
     }
+  }
+
+  openQRCodeScannerDialog() {
+    const dialogRef = this.dialog.open(QrCodeScannerComponent, {
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('QR code scanner dialog closed');
+    });
   }
 }

@@ -21,6 +21,7 @@
       </mat-form-field>
       <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
       <a routerLink="/forgot-password">Forgot your password?</a>
+      <a (click)="openQRCodeScannerDialog()">Login with QR</a>
       <button mat-button type="submit">Sign In</button>
     </form>
   </div>

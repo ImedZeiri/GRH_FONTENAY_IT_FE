@@ -253,7 +253,6 @@ export class ListComponent implements OnInit {
     });
   }
   clearTaskLists() {
-    // Clear existing task lists
     this.todoList = [];
     this.inProgressList = [];
     this.pendingList = [];

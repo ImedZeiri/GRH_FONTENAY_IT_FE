@@ -16,6 +16,7 @@ import {ContentLoaderComponent} from "./components/content-loader/content-loader
 import { NotFoundLauncherComponent } from './components/not-found/not-found-launcher/not-found-launcher.component';
 import {FooterComponent} from "./components/footer/footer.component";
 import {LoadingSpinnerComponent} from "./components/loader/loading-spinner.component";
+import { BannedComponent } from './components/banned/banned.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {LoadingSpinnerComponent} from "./components/loader/loading-spinner.compo
     ContentLoaderComponent,
     NotFoundLauncherComponent,
     FooterComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    BannedComponent
   ],
   imports: [
     CommonModule,

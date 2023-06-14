@@ -29,6 +29,7 @@ import { EditComponent } from './pages/edit/edit.component';
 import { ListComponent } from './pages/list/list.component';
 import { ShowComponent } from './pages/show/show.component';
 import { DoughnutComponent } from './components/doughnut/doughnut.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 
 
@@ -39,7 +40,8 @@ import { DoughnutComponent } from './components/doughnut/doughnut.component';
     EditComponent,
     ListComponent,
     ShowComponent,
-    DoughnutComponent
+    DoughnutComponent,
+    BarChartComponent
   ],
   imports: [
     CommonModule,

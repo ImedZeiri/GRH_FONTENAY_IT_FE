@@ -35,8 +35,8 @@ export class TaskService {
       );
   };
 
-  getTask(id: any): Observable<Response[]> {
-    let url = 'http://localhost:8000'  + id;
+  getTask(id: any): Observable<any[]> {
+    let url = 'http://127.0.0.1:8000/api/tasks/'  + id;
     return this.http.get<Response[]>(url)
       .pipe(
         tap(heroes => console.log('fetched tasks')),
