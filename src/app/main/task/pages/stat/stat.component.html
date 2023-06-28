@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  Streamline workflow, prioritize tasks, collaborate effectively !!
+</mat-toolbar>
+
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Task management">
+    <app-list></app-list>
+  </mat-tab>
+
+  <mat-tab label="Statistics">
+    <div class="container">
+      <ng-container *ngIf="chartsLoaded">
+        <div class="box">
+          <app-chart-task1></app-chart-task1>
+        </div>
+        <div class="box">
+          <app-chart-task2></app-chart-task2>
+        </div>
+        <div class="box">
+          <app-chart-task3></app-chart-task3>
+        </div>
+        <div class="box">
+          <app-chart-task4></app-chart-task4>
+        </div>
+        <div class="box">
+          <app-chart-task5></app-chart-task5>
+        </div>
+        <div class="box">
+          <app-chart-task6></app-chart-task6>
+        </div>
+      </ng-container>
+    </div>
+  </mat-tab>
+</mat-tab-group>

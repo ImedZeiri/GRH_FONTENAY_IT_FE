@@ -87,10 +87,12 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.getDepartments();
     this.authService.startTokenRefreshTimer();
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.backgroundImageUrl = 'https://images3.alphacoders.com/489/48957.jpg';
     this.userData = this.UService.getUser(localStorage.getItem('id'));
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   getDepartments(){
     this.service.getDepartments().subscribe((res)=>{

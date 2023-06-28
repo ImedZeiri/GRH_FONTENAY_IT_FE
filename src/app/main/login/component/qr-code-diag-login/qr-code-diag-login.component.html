@@ -1,0 +1,14 @@
+<h2 mat-dialog-title class="mat-dialog-title">QR Code</h2>
+<mat-dialog-content>
+
+  <div class="mat-dialog-content-body">
+    <!-- <iframe src="{{ data.qrcode.data }}"></iframe> -->
+    <p>{{ data['qrcode'] | json }}</p>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Open</button>
+</mat-dialog-actions>

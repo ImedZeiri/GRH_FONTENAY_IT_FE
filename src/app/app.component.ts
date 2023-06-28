@@ -32,6 +32,7 @@ export class AppComponent implements OnInit{
 
   private users: any;
   currentUser: any;
+  private role: string;
 
   constructor(private cookie:CookieService,
               private userDataService: UserDataService,
@@ -56,7 +57,7 @@ export class AppComponent implements OnInit{
       SidePanelPosition.LEFT,
       SidePanelState.OPEN
     );
-    this.createLinks();
+    this.createLinks(this.role);
 
     this.route.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -83,9 +84,7 @@ export class AppComponent implements OnInit{
       });
     }
   }
-
-  private createLinks() {
-    console.log(this.service.getUser(localStorage.getItem('id')));
+  createLinks(role: string) {
     this.deniedPathsUser= [
       '/users',
       '/company',
@@ -150,11 +149,11 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.createLinks(this.role);
     this.route.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.checkAccess(event.url);
       }
     });
-    this.createLinks();
   }
 }

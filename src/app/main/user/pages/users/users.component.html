@@ -1,13 +1,13 @@
 <div class="topPanel" [class.clicked-outside]="isClickedOutside">
-  <div class="container">
+  <div class="topPanelW">
     <app-widget [iconClass]="'supervisor_account'" [value]="totalItem.length.toString()" [label]="'Total users'"></app-widget>
     <app-widget [iconClass]="'how_to_reg'" [value]="totalItem.length.toString()" [label]="'Active users'"></app-widget>
-  </div>
+ </div>
     <div class="topPanel__left" >
       <a mat-fab extended class="topPanel__button" (click)="openAddUserDialog()">
         <mat-icon>add</mat-icon>Add</a>
       <mat-button class="topPanel__button_icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
-        <mat-icon class="topPanel__icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">close</mat-icon>
+        <mat-icon (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">close</mat-icon>
       </mat-button>
     </div>
 
@@ -26,7 +26,7 @@
             <mat-label>Search</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
           </mat-form-field>
-          <table mat-table [dataSource]="dataSource">
+          <table mat-table [dataSource]="dataSource" matSort>
             <ng-template #table>
               <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column" >
                 <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>

@@ -1,0 +1,20 @@
+.mat-toolbar{
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  border-radius: 5px;
+  background: #0067a3;
+  height: 50px;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: center;
+}
+
+.box {
+  flex-basis: 30%;
+  height: 30%;
+  box-sizing: border-box;
+}

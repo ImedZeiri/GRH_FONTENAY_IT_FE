@@ -1,11 +1,18 @@
 .topPanel {
+  background: #0c334f;
   background-repeat: no-repeat;
   background-position: top right;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  height: 60px;
+  height: 30px;
+  margin-top: 15px;
+}
+.topPanelW{
+  justify-content: space-between;
+  display: flex;
+  gap: 200px;
 }
 
 .topPanel__left {
@@ -23,11 +30,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  background-color: #3a98b9;
   color: #f7fafc;
   height: 30px;
   width: 80px;
-  border-radius: 4px;
+  border-radius: 2px;
   cursor: pointer;
   text-decoration: none;
   box-shadow: none; /* Ajout de cette ligne */
@@ -38,12 +45,13 @@
 }
 
 .topPanel__button_icon {
-  background-color: transparent;
+  background-color: orangered;
   color: #f7fafc;
   width: 30px;
   border: none;
   cursor: pointer;
   padding-left: 5px;
+  height: 31px;
 }
 
 .topPanel__icon {
@@ -82,6 +90,7 @@
   justify-content: center;
   border-radius: 5px;
   margin-left: 20px;
+  margin-top: 30px;
   position: relative;
   right: -30px;
 }

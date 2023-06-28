@@ -92,10 +92,12 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.getCompanies();
     this.authService.startTokenRefreshTimer();
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.userData = this.UService.getUser(localStorage.getItem('id'));
     this.getCompanyAssociates();
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   getCompanies(){
     this.service.getCompanys().subscribe((res)=>{

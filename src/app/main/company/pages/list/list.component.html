@@ -1,5 +1,5 @@
 <div class="topPanel">
-  <div class="container">
+  <div class="topPanelW">
     <app-widget [background]="'linear-gradient(to right, #141e30, #243b55)'" [iconClass]="'location_city'" [value]="totalItem.length.toString()" [label]="'Total Companies'"></app-widget>
     <app-widget [background]="'linear-gradient(to right, #141e30, #243b55)'" [iconClass]="'account_balance'" [value]="totalItem.length.toString()" [label]="'Active Companies'"></app-widget>
   </div>
@@ -7,7 +7,7 @@
     <a mat-fab extended class="topPanel__button" (click)="openAddCompanyDialog()">
       <mat-icon>add</mat-icon>Add</a>
     <mat-button class="topPanel__button_icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">
-      <mat-icon class="topPanel__icon" (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">close</mat-icon>
+      <mat-icon (click)="toggleWidth()" *ngIf="toggled" [ngStyle]="{'opacity':opacity }">close</mat-icon>
     </mat-button>
   </div>
 </div>

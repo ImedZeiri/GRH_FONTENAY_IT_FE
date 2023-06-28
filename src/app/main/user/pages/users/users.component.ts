@@ -84,6 +84,8 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
     this.authService.startTokenRefreshTimer();
+  }
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

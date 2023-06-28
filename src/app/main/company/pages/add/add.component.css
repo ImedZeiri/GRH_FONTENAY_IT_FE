@@ -1,4 +1,6 @@
-
+.mat-card{
+  box-shadow: none;
+}
 form {
   background-color: #ffffff;
   align-items: center;

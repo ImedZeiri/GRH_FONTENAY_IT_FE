@@ -150,6 +150,7 @@ body {
   position: relative; /* Position absolue */
   top: 0; /* Aligner l'icône en haut */
   padding-right: -100px; /* Ajouter un espacement à droite pour l'icône */
+  margin-left: auto;
 }
 
 .visibility-icon:hover {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/login/auth.service';
@@ -15,6 +15,8 @@ import {UsersService} from "../../user/services/users.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Output() roleChanged = new EventEmitter<string>();
+
   isLoading = false;
   responsedata: any;
   decodedToken: any;
@@ -82,6 +84,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('accountStatus', this.currentUser.accountStatus);
 
               localStorage.setItem('roles', this.decodedToken.roles.toString());
+              this.roleChanged.emit(this.decodedToken.roles.toString());
               this.route.navigate(['home']);
               this.isLoading = false;
               this.showSuccess('Login successful', 'Login successful');

@@ -15,5 +15,5 @@
   </app-dashboard-layout>
 </div>
 <div *ngIf="!displayMenu">
-  <app-login></app-login>
+  <app-login (roleChanged)="createLinks($event)"></app-login>
 </div>
